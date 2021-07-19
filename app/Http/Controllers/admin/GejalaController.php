@@ -4,19 +4,18 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\Gejala;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\admin\AdminController;
+use Exception;
 
-class GejalaController extends Controller
+class GejalaController extends AdminController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public $title = 'Gejala';
+
     public function index()
     {
-        $title = 'Gejala';
-        return view('admin.gejala.index', compact('title'));
+        $title = $this->title;
+        $gejalas = Gejala::all();
+        return view('admin.gejala.index', compact('title', 'gejalas'));
     }
 
     /**
@@ -26,7 +25,8 @@ class GejalaController extends Controller
      */
     public function create()
     {
-        //
+        $title = $this->title;
+        return view('admin.gejala.create', compact('title'));
     }
 
     /**
@@ -37,7 +37,10 @@ class GejalaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        Gejala::create($data);
+        $this->notification('success', 'Berhasil', 'Data Gejala Berhasil Ditambah');
+        return redirect(route('admin.gejala.index'));
     }
 
     /**
@@ -59,7 +62,8 @@ class GejalaController extends Controller
      */
     public function edit(Gejala $gejala)
     {
-        //
+        $title = $this->title;
+        return view('admin.gejala.edit', compact('gejala', 'title'));
     }
 
     /**
@@ -71,7 +75,11 @@ class GejalaController extends Controller
      */
     public function update(Request $request, Gejala $gejala)
     {
-        //
+        // dd($gejala);
+        $data = $request->all();
+        $gejala->update($data);
+        $this->notification('success', 'Berhasil', 'Data Gejala Berhasil Diupdate');
+        return redirect(route('admin.gejala.index'));
     }
 
     /**
@@ -82,6 +90,9 @@ class GejalaController extends Controller
      */
     public function destroy(Gejala $gejala)
     {
-        //
+        // try {
+        $hapus = $gejala->delete();
+
+        return response()->json([$hapus], 200);
     }
 }

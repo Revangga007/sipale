@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Gejala extends Model
 {
     use HasFactory;
+
+    protected $table = 'gejala';
+
+    protected $fillable = [
+        'kode', 'nama'
+    ];
 }

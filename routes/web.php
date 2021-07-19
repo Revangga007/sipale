@@ -17,4 +17,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'admin', 'as' => 'admin.'], fu
     Route::get('/', DashboardController::class)->name('dashboard');
     Route::resource('gejala', GejalaController::class);
     Route::resource('penyakit', PenyakitController::class);
+    Route::resource('bp', BasisPengetahuanController::class);
 });
