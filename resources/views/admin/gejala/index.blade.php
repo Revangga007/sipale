@@ -14,7 +14,7 @@
     <div class="section-body">
       <div class="card card-primary">
         <div class="card-header">
-          <h4>Daftar Gejala</h4>
+          <h4>Daftar {{$title}}</h4>
           <div class="card-header-action">
             <a href="{{ route('admin.gejala.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
           </div>

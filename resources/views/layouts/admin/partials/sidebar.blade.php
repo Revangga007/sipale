@@ -15,7 +15,7 @@
           <a href="{{route('admin.gejala.index')}}" class="nav-link"><i class="fas fa-plus-square"></i><span>Gejala</span></a>
         </li>
         <li class="{{ $title == 'Penyakit' ? 'active' : ''}}">
-          <a href="{{route('admin.penyakit.index')}}" class="nav-link"><i class="fas fa-medkit"></i><span>Penyakit</span></a>
+          <a href="{{route('admin.penyakit.index')}}" class="nav-link"><i class="fas fa-medkit"></i> <span>Penyakit</span></a>
         </li>
         <li class="{{ $title == 'Basis Pengetahuan' ? 'active' : ''}}">
           <a href="{{route('admin.bp.index')}}" class="nav-link"><i class="fas fa-book"></i><span>Basis Pengetahuan</span></a>

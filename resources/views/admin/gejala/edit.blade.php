@@ -13,7 +13,7 @@
     <div class="section-body">
         <div class="card card-primary">
             <div class="card-header">
-                <h4>Edit Gejala</h4>
+                <h4>Edit {{$title}}</h4>
             </div>
             <form action="{{route('admin.gejala.update', $gejala->id)}}" method="post">
                 @method('PUT')

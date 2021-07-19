@@ -13,7 +13,7 @@
     <div class="section-body">
         <div class="card card-primary">
             <div class="card-header">
-                <h4>Tambah Gejala</h4>
+                <h4>Tambah {{$title}}</h4>
             </div>
             <form action="{{route('admin.gejala.store')}}" method="post">
                 @csrf

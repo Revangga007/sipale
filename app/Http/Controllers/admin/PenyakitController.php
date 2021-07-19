@@ -8,15 +8,12 @@ use App\Http\Controllers\Controller;
 
 class PenyakitController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $title = 'Penyakit';
     public function index()
     {
-        $title = 'Penyakit';
-        return view('admin.penyakit.index', compact('title'));
+        $title = $this->title;
+        $penyakits = Penyakit::all();
+        return view('admin.penyakit.index', compact('title', 'penyakits'));
     }
 
     /**
@@ -26,7 +23,8 @@ class PenyakitController extends Controller
      */
     public function create()
     {
-        //
+        $title = $this->title;
+        return view('admin.penyakit.create', compact('title'));
     }
 
     /**
