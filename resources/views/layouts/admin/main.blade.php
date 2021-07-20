@@ -9,7 +9,8 @@
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{asset('assets/vendor/fontawesome/css/all.min.css')}}">
-{{-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/> --}}
+  {{-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> --}}
+
   <!-- CSS Libraries -->
     @stack('css')
 
@@ -57,9 +58,10 @@
   <script src="{{asset('assets/vendor/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('assets/vendor/popper/popper.min.js')}}"></script>
   <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-  <script src="{{asset('assets/vendor/fontawesome/js/all.min.js')}}"></script>
   <script src="{{asset('assets/vendor/nicescroll/jquery.nicescroll.min.js')}}"></script>
   <script src="{{asset('assets/vendor/moment/moment.min.js')}}"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
   
   <!-- JS Libraies -->

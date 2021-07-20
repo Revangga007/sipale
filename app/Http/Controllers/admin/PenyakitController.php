@@ -4,11 +4,12 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\Penyakit;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\admin\AdminController;
 
-class PenyakitController extends Controller
+class PenyakitController extends AdminController
 {
     protected $title = 'Penyakit';
+
     public function index()
     {
         $title = $this->title;
@@ -16,34 +17,21 @@ class PenyakitController extends Controller
         return view('admin.penyakit.index', compact('title', 'penyakits'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $title = $this->title;
         return view('admin.penyakit.create', compact('title'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        Penyakit::create($data);
+        $this->notification('success', 'Berhasil', 'Data Penyakit Berhasil Ditambah');
+        return redirect(route('admin.penyakit.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Penyakit  $penyakit
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Penyakit $penyakit)
     {
         //
@@ -57,7 +45,8 @@ class PenyakitController extends Controller
      */
     public function edit(Penyakit $penyakit)
     {
-        //
+        $title = $this->title;
+        return view('admin.penyakit.edit', compact('title', 'penyakit'));
     }
 
     /**

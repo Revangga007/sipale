@@ -31,6 +31,10 @@
                         <label for="nama">Nama penyakit</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{old('nama')}}" required>
                     </div>
+                    <div class="form-group">
+                        <label for="deskripsi">Deskripsi penyakit</label>
+                        <textarea name="deskripsi" id="deskripsi" class="form-control"></textarea>
+                    </div>
                 </div>
                 <div class="card-footer text-right">
                     <a href="{{route('admin.penyakit.index')}}" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Kembali</a>
@@ -41,3 +45,15 @@
     </div>
 </section>
 @endsection
+
+@push('js')
+    <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+@endpush
+
+@push('script')
+    <script>
+        $(document).ready(()=>{
+            CKEDITOR.replace('deskripsi');
+        });
+    </script>
+@endpush

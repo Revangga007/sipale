@@ -13,9 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => 'admin', 'namespace' => 'admin', 'as' => 'admin.'], function () {
+Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
+
+Route::group(['prefix' => 'admin', 'namespace' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
     Route::get('/', DashboardController::class)->name('dashboard');
     Route::resource('gejala', GejalaController::class);
     Route::resource('penyakit', PenyakitController::class);
     Route::resource('bp', BasisPengetahuanController::class);
+    Route::resource('berita', BeritaController::class);
 });
+
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
