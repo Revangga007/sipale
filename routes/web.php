@@ -20,6 +20,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'admin', 'as' => 'admin.', 'mi
     Route::resource('gejala', GejalaController::class);
     Route::resource('penyakit', PenyakitController::class);
     Route::resource('bp', BasisPengetahuanController::class);
+    Route::get('lg', [BasisPengetahuanController::class, 'lg'])->name('lg');
+    Route::get('lp', [BasisPengetahuanController::class, 'lp'])->name('lp');
     Route::resource('berita', BeritaController::class);
 });
 

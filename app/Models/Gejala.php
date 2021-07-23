@@ -14,4 +14,9 @@ class Gejala extends Model
     protected $fillable = [
         'kode', 'nama'
     ];
+
+    public function basis_pengetahuan()
+    {
+        return $this->hasMany(BasisPengetahuan::class);
+    }
 }

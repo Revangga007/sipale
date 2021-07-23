@@ -20,7 +20,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="kode">Kode penyakit</label>
-                        <input type="text" class="form-control @error('kode') is-invalid @enderror" id="kode" name="kode" value="{{old('kode')}}" required>
+                        <input type="text" class="form-control @error('kode') is-invalid @enderror" id="kode" name="kode" value="{{old('kode')}}" required placeholder="Masukkan Kode Penyakit">
                         @error('kode')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -29,11 +29,21 @@
                     </div>
                     <div class="form-group">
                         <label for="nama">Nama penyakit</label>
-                        <input type="text" class="form-control" id="nama" name="nama" value="{{old('nama')}}" required>
+                        <input type="text" class="form-control @error('nama') is-invalid @enderror"" id="nama" name="nama" value="{{old('nama')}}" required placeholder="Masukkan Nama Penyakit">
+                        @error('nama')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="deskripsi">Deskripsi penyakit</label>
                         <textarea name="deskripsi" id="deskripsi" class="form-control"></textarea>
+                        @error('deskripsi')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                 </div>
                 <div class="card-footer text-right">

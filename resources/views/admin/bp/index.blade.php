@@ -14,6 +14,9 @@
       <div class="card card-primary">
         <div class="card-header">
           <h4>Daftar Basis Pengetahuan</h4>
+          <div class="card-header-action">
+            <a href="{{ route('admin.bp.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+          </div>
         </div>
         <div class="card-body">
 

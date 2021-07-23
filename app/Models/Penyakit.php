@@ -12,4 +12,9 @@ class Penyakit extends Model
     protected $table = 'penyakit';
 
     protected $fillable = ['kode', 'nama', 'deskripsi'];
+
+    public function basis_pengetahuan()
+    {
+        return $this->hasMany(BasisPengetahuan::class);
+    }
 }

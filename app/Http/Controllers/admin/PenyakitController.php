@@ -13,7 +13,7 @@ class PenyakitController extends AdminController
     public function index()
     {
         $title = $this->title;
-        $penyakits = Penyakit::all();
+        $penyakits = Penyakit::all()->sortDesc();
         return view('admin.penyakit.index', compact('title', 'penyakits'));
     }
 
@@ -34,7 +34,8 @@ class PenyakitController extends AdminController
 
     public function show(Penyakit $penyakit)
     {
-        //
+        $title = $this->title;
+        return view('admin.penyakit.show', compact('title', 'penyakit'));
     }
 
     /**
@@ -58,7 +59,10 @@ class PenyakitController extends AdminController
      */
     public function update(Request $request, Penyakit $penyakit)
     {
-        //
+        $data = $request->all();
+        $penyakit->update($data);
+        $this->notification('success', 'Berhasil', 'Data Penyakit Berhasil Diupdate');
+        return redirect(route('admin.penyakit.show', $penyakit->id));
     }
 
     /**
@@ -69,6 +73,8 @@ class PenyakitController extends AdminController
      */
     public function destroy(Penyakit $penyakit)
     {
-        //
+        $penyakit->delete();
+        $this->notification('success', 'Berhasil', 'Data Penyakit Berhasil Dihapus');
+        return redirect(route('admin.penyakit.index'));
     }
 }

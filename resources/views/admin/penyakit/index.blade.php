@@ -38,13 +38,7 @@
                         <td>{{ $penyakit->kode }}</td>
                         <td>{{ $penyakit->nama }}</td>
                         <td>
-                          <a class="btn btn-icon btn-warning btn-sm" href="{{route('admin.penyakit.edit', $penyakit->id)}}"><i class="fa fa-edit"></i></a>
-                            <form action="{{route('admin.penyakit.destroy', $penyakit->id)}}" id="delete_{{$penyakit->id}}" method="POST" class="d-inline">
-                              @csrf
-                              @method('DELETE')
-                                <input type="hidden" name="id" value="{{$penyakit->id}}">
-                                <button type="button" class="btn btn-icon btn-danger btn-sm btn-hapus" value="{{$penyakit->id}}"><i class="fa fa-trash"></i></button>
-                            </form>
+                          <a class="btn btn-icon btn-primary btn-sm" href="{{route('admin.penyakit.show', $penyakit->id)}}"><i class="fas fa-bars"></i></a>
                         </td>
                     </tr>
                   @endforeach
@@ -103,7 +97,6 @@
     let url = $(`#delete_${id}`).attr('action');
     let data = $(`#delete_${id}`).serialize();
     let method = 'POST';
-    console.log(url,data,method);
     $.ajax({
       url: url,
       type: method,

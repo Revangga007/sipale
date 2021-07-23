@@ -3,84 +3,72 @@
 namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Models\Gejala;
+use App\Models\Penyakit;
+use App\Models\BasisPengetahuan;
+use App\Http\Controllers\admin\AdminController;
 
-class BasisPengetahuanController extends Controller
+class BasisPengetahuanController extends AdminController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $title = 'Basis Pengetahuan';
+
     public function index()
     {
-        $title = 'Basis Pengetahuan';
-        return view('admin.bp.index', compact('title'));
+        $title = $this->title;
+        $bps = BasisPengetahuan::all()->sortDesc();
+        return view('admin.bp.index', compact('title', 'bps'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $title = $this->title;
+        $gejalas = Gejala::select('id', 'nama')->get();
+        $penyakits = Penyakit::select('id', 'nama')->get();
+        return view('admin.bp.create', compact('title', 'gejalas', 'penyakits'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        BasisPengetahuan::create($data);
+        $this->notification('success', 'Berhasil', 'Data Basis Pengetahuan Berhasil Ditambah');
+        return redirect(route('admin.bp.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $title = $this->title;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $title = $this->title;
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
+    }
+
+    public function lg(Request $request)
+    {
+        if ($request->has('q')) {
+            $search = $request->q;
+            $data = Gejala::select("id", "nama")->where('nama', 'LIKE', "%$search%")->get();
+            return response()->json($data);
+        }
+    }
+    public function lp(Request $request)
+    {
+        if ($request->has('q')) {
+            $search = $request->q;
+            $data = Penyakit::select("id", "nama")->where('nama', 'LIKE', "%$search%")->get();
+            return response()->json($data);
+        }
     }
 }

@@ -21,6 +21,8 @@ class CreateBasisPengetahuanTable extends Migration
             $table->float('mb');
             $table->float('md');
             $table->timestamps();
+            $table->foreign('gejala_id')->references('id')->on('gejala')->onDelete('cascade');
+            $table->foreign('penyakit_id')->references('id')->on('penyakit')->onDelete('cascade');
         });
     }
 
