@@ -22,8 +22,8 @@
                         <p>{{$penyakit->nama}}</p>
                     </div>
                     <div class="col-3">
-                        <p><strong>Kode Penyakit :</strong></p>
-                        <p>{{$penyakit->kode}}</p>
+                        <p><strong>Id Penyakit :</strong></p>
+                        <p>{{$penyakit->id}}</p>
                         
                     </div>
                 </div>

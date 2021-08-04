@@ -19,9 +19,9 @@
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="kode">Kode penyakit</label>
-                        <input type="text" class="form-control @error('kode') is-invalid @enderror" id="kode" name="kode" value="{{old('kode')}}" required placeholder="Masukkan Kode Penyakit">
-                        @error('kode')
+                        <label for="id">Id penyakit</label>
+                        <input type="text" class="form-control @error('id') is-invalid @enderror" id="id" name="id" value="{{old('id')}}" placeholder="Masukkan Id Penyakit">
+                        @error('id')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group">
                         <label for="nama">Nama penyakit</label>
-                        <input type="text" class="form-control @error('nama') is-invalid @enderror"" id="nama" name="nama" value="{{old('nama')}}" required placeholder="Masukkan Nama Penyakit">
+                        <input type="text" class="form-control @error('nama') is-invalid @enderror"" id="nama" name="nama" value="{{old('nama')}}" placeholder="Masukkan Nama Penyakit">
                         @error('nama')
                         <div class="invalid-feedback">
                             {{ $message }}

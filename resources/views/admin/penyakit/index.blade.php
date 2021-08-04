@@ -26,7 +26,7 @@
                 <thead>
                   <tr class="text-center">
                     <th>No</th>
-                    <th>Kode penyakit</th>
+                    <th>Id penyakit</th>
                     <th>Nama penyakit</th>
                     <th>Aksi</th>
                   </tr>
@@ -35,7 +35,7 @@
                   @foreach ($penyakits as $penyakit)
                     <tr class="text-center">
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $penyakit->kode }}</td>
+                        <td>{{ $penyakit->id }}</td>
                         <td>{{ $penyakit->nama }}</td>
                         <td>
                           <a class="btn btn-icon btn-primary btn-sm" href="{{route('admin.penyakit.show', $penyakit->id)}}"><i class="fas fa-bars"></i></a>

@@ -10,9 +10,10 @@ class Gejala extends Model
     use HasFactory;
 
     protected $table = 'gejala';
-
+    public $incrementing = false;
+    protected $keyType = 'string';
     protected $fillable = [
-        'kode', 'nama'
+        'id', 'nama'
     ];
 
     public function basis_pengetahuan()

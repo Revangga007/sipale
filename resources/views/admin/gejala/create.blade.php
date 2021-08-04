@@ -19,9 +19,9 @@
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="kode">Kode Gejala</label>
-                        <input type="text" class="form-control @error('kode') is-invalid @enderror" id="kode" name="kode" value="{{old('kode')}}" placeholder="Masukkan Kode Gejala">
-                        @error('kode')
+                        <label for="id">Id Gejala</label>
+                        <input type="text" class="form-control @error('id') is-invalid @enderror" id="id" name="id" value="{{old('id')}}" placeholder="Masukkan Id Gejala">
+                        @error('id')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>

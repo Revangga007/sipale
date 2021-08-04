@@ -20,9 +20,9 @@
                 @method('PUT')
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="kode">Kode penyakit</label>
-                        <input type="text" class="form-control @error('kode') is-invalid @enderror" id="kode" name="kode" value="{{$penyakit->kode}}"  placeholder="Masukkan Kode Penyakit">
-                        @error('kode')
+                        <label for="id">Id penyakit</label>
+                        <input type="text" class="form-control @error('id') is-invalid @enderror" id="id" name="id" value="{{$penyakit->id}}" disabled>
+                        @error('id')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>

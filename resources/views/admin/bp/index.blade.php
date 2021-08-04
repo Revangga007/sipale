@@ -26,7 +26,6 @@
                 <thead>
                   <tr class="text-center">
                     <th>No</th>
-                    <th>Kode BP</th>
                     <th>Nama Gejala</th>
                     <th>Nama Penyakit</th>
                     <th>Aksi</th>
@@ -36,7 +35,6 @@
                   @foreach ($bps as $bp)
                     <tr class="text-center">
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $bp->kode }}</td>
                         <td>{{ $bp->gejala->nama }}</td>
                         <td>{{ $bp->penyakit->nama }}</td>
                         <td>

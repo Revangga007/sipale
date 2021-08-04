@@ -24,10 +24,7 @@
       <a href="" class="nav-link"><i class="fas fa-users"></i><span>Pasien</span></a>
     </li>
 
-    <li class="menu-header">Pendukung</li>
-    <li class="{{ $title == 'Berita' ? 'active' : ''}}">
-      <a href="{{route('admin.berita.index')}}" class="nav-link"><i class="far fa-newspaper"></i><span>Berita</span></a>
-    </li>
+    <li class="menu-header">Support</li>
     <li class="{{ $title == 'Akun' ? 'active' : ''}}">
       <a href="{{route('admin.berita.index')}}" class="nav-link"><i class="fas fa-user"></i><span>Akun</span></a>
     </li>

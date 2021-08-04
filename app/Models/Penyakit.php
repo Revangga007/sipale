@@ -10,8 +10,9 @@ class Penyakit extends Model
     use HasFactory;
 
     protected $table = 'penyakit';
-
-    protected $fillable = ['kode', 'nama', 'deskripsi'];
+    public $incrementing = false;
+    protected $keyType = 'string';
+    protected $fillable = ['id', 'nama', 'deskripsi'];
 
     public function basis_pengetahuan()
     {

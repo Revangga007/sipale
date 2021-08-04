@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Penyakit;
-use Illuminate\Http\Request;
+use App\Http\Requests\PenyakitRequest;
 use App\Http\Controllers\admin\AdminController;
 
 class PenyakitController extends AdminController
@@ -23,7 +23,7 @@ class PenyakitController extends AdminController
         return view('admin.penyakit.create', compact('title'));
     }
 
-    public function store(Request $request)
+    public function store(PenyakitRequest $request)
     {
         $data = $request->all();
         Penyakit::create($data);
@@ -57,7 +57,7 @@ class PenyakitController extends AdminController
      * @param  \App\Models\Penyakit  $penyakit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Penyakit $penyakit)
+    public function update(PenyakitRequest $request, Penyakit $penyakit)
     {
         $data = $request->all();
         $penyakit->update($data);

@@ -26,7 +26,7 @@
                 <thead>
                   <tr class="text-center">
                     <th>No</th>
-                    <th>Kode Gejala</th>
+                    <th>Id Gejala</th>
                     <th>Nama Gejala</th>
                     <th>Aksi</th>
                   </tr>
@@ -35,7 +35,7 @@
                   @foreach ($gejalas as $gejala)
                     <tr class="text-center">
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $gejala->kode }}</td>
+                        <td>{{ $gejala->id }}</td>
                         <td>{{ $gejala->nama }}</td>
                         <td>
                           <a class="btn btn-icon btn-warning btn-sm" href="{{route('admin.gejala.edit', $gejala->id)}}"><i class="fa fa-edit"></i></a>

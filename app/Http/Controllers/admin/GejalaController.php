@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Gejala;
-use Illuminate\Http\Request;
+use App\Http\Requests\GejalaRequest;
 use App\Http\Controllers\admin\AdminController;
-use Exception;
+
 
 class GejalaController extends AdminController
 {
@@ -35,7 +35,7 @@ class GejalaController extends AdminController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GejalaRequest $request)
     {
         $data = $request->all();
         Gejala::create($data);
@@ -73,7 +73,7 @@ class GejalaController extends AdminController
      * @param  \App\Models\Gejala  $gejala
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gejala $gejala)
+    public function update(GejalaRequest $request, Gejala $gejala)
     {
         // dd($gejala);
         $data = $request->all();

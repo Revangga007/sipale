@@ -11,15 +11,15 @@ class BasisPengetahuan extends Model
 
     protected $table = 'basis_pengetahuan';
 
-    protected $fillable = ['kode', 'gejala_id', 'penyakit_id', 'mb', 'md'];
+    protected $fillable = ['gejala_id', 'penyakit_id', 'mb', 'md'];
 
     public function gejala()
     {
-        return $this->belongsTo(Gejala::class, 'id');
+        return $this->belongsTo(Gejala::class, 'gejala_id',);
     }
 
     public function penyakit()
     {
-        return $this->belongsTo(Penyakit::class, 'id');
+        return $this->belongsTo(Penyakit::class, 'penyakit_id');
     }
 }
