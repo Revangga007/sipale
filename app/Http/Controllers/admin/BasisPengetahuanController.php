@@ -15,7 +15,7 @@ class BasisPengetahuanController extends AdminController
     public function index()
     {
         $title = $this->title;
-        $bps = BasisPengetahuan::all()->sortDesc();
+        $bps = BasisPengetahuan::all();
         return view('admin.bp.index', compact('title', 'bps'));
     }
 
@@ -35,9 +35,10 @@ class BasisPengetahuanController extends AdminController
         return redirect(route('admin.bp.index'));
     }
 
-    public function show($id)
+    public function show(BasisPengetahuan $bp)
     {
         $title = $this->title;
+        return view('admin.bp.show', compact('title', 'bp'));
     }
 
     public function edit($id)
@@ -53,22 +54,5 @@ class BasisPengetahuanController extends AdminController
     public function destroy($id)
     {
         //
-    }
-
-    public function lg(Request $request)
-    {
-        if ($request->has('q')) {
-            $search = $request->q;
-            $data = Gejala::select("id", "nama")->where('nama', 'LIKE', "%$search%")->get();
-            return response()->json($data);
-        }
-    }
-    public function lp(Request $request)
-    {
-        if ($request->has('q')) {
-            $search = $request->q;
-            $data = Penyakit::select("id", "nama")->where('nama', 'LIKE', "%$search%")->get();
-            return response()->json($data);
-        }
     }
 }

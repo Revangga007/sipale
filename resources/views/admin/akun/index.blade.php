@@ -16,7 +16,7 @@
         <div class="card-header">
           <h4>Daftar {{$title}}</h4>
           <div class="card-header-action">
-            <a href="{{ route('admin.bp.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+            <a href="{{ route('admin.gejala.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
           </div>
         </div>
         <div class="card-body">
@@ -26,21 +26,25 @@
                 <thead>
                   <tr class="text-center">
                     <th>No</th>
-                    <th>Kode BP</th>
-                    <th>Nama Gejala</th>
-                    <th>Nama Penyakit</th>
+                    <th>Nama</th>
+                    <th>Username</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($bps as $bp)
+                  @foreach ($gejalas as $gejala)
                     <tr class="text-center">
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $bp->kode }}</td>
-                        <td>{{ $bp->gejala->nama }}</td>
-                        <td>{{ $bp->penyakit->nama }}</td>
+                        <td>{{ $gejala->nama }}</td>
+                        <td>{{ $gejala->username }}</td>
                         <td>
-                          <a class="btn btn-icon btn-primary btn-sm" href="{{route('admin.bp.show', $bp->id)}}"><i class="fas fa-bars"></i></a>
+                          <a class="btn btn-icon btn-warning btn-sm" href="{{route('admin.gejala.edit', $gejala->id)}}"><i class="fa fa-edit"></i></a>
+                            <form action="{{route('admin.gejala.destroy', $gejala->id)}}" id="delete_{{$gejala->id}}" method="POST" class="d-inline">
+                              @csrf
+                              @method('DELETE')
+                                <input type="hidden" name="id" value="{{$gejala->id}}">
+                                <button type="button" class="btn btn-icon btn-danger btn-sm btn-hapus" value="{{$gejala->id}}"><i class="fa fa-trash"></i></button>
+                            </form>
                         </td>
                     </tr>
                   @endforeach
@@ -76,6 +80,48 @@
   $(document).ready(()=> {
     $('#tabel').DataTable();
   });
+
+  $('.btn-hapus').click(function(){
+    let id = $(this).val();
+    console.log(id);
+    Swal.fire({
+      title: 'Perhatian!',
+      text: "Apakah Anda Yakin Untuk Menghapus Data?",
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonColor: 'grey',
+      confirmButtonText: 'Ya',
+      cancelButtonText: 'Tidak'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        hapusData(id);
+      }
+    })
+  })
+
+  function hapusData(id){
+    let url = $(`#delete_${id}`).attr('action');
+    let data = $(`#delete_${id}`).serialize();
+    let method = 'POST';
+    console.log(url,data,method);
+    $.ajax({
+      url: url,
+      type: method,
+      data: data,
+      success: function(response){
+        console.log(response);
+          Swal.fire(
+            'Berhasil!',
+            'Data Gejala Berhasil Dihapus',
+            'success'
+          )
+          setTimeout(() => {
+            location.reload();
+          }, 1000);
+      }
+    })
+
+  }
 
 </script>
 

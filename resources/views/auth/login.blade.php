@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
   <!-- CSS Libraries -->
-  {{-- <link rel="stylesheet" href="../node_modules/bootstrap-social/bootstrap-social.css"> --}}
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{asset('assets/admin/css/style.css')}}">
@@ -35,7 +34,7 @@
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                   <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">{{__('E-Mail')}}</label>
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror " name="email" value="{{ old('email') }}" tabindex="1" required autofocus>
                     @error('email')                        
                     <div class="invalid-feedback">
@@ -63,14 +62,14 @@
 
                   <div class="form-group">
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
-                      <label class="custom-control-label" for="remember-me">Remember Me</label>
+                      <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                      <label class="custom-control-label" for="remember">{{ __('Remember Me') }}</label>
                     </div>
                   </div>
 
                   <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                      Login
+                      {{ __('Login') }}
                     </button>
                   </div>
                 </form>

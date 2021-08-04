@@ -13,31 +13,31 @@
     <div class="section-body">
         <div class="card card-primary">
             <div class="card-header">
-                <h4>Detail {{$title}} {{$penyakit->nama}}</h4>
+                <h4>Detail {{$title}}</h4>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-9">
-                        <p><strong>Nama Penyakit :</strong></p>
-                        <p>{{$penyakit->nama}}</p>
+                        <p><strong>Nama Gejala :</strong></p>
+                        <p>{{$bp->gejala->nama}}</p>
                     </div>
                     <div class="col-3">
-                        <p><strong>Kode Penyakit :</strong></p>
-                        <p>{{$penyakit->kode}}</p>
+                        <p><strong>Nama Penyakit :</strong></p>
+                        <p>{{$bp->penyakit->nama}}</p>
                         
                     </div>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="col">
-                        <p><strong>Deskripsi Penyakit :</strong></p>
-                        <p>{!! $penyakit->deskripsi !!}</p>
+                        {{-- <p><strong>Deskripsi Penyakit :</strong></p>
+                        <p>{!! $penyakit->deskripsi !!}</p> --}}
                     </div>
                 </div>
 
 
             </div>
-                <div class="card-footer">
+                {{-- <div class="card-footer">
                     <div class="row">
                         <div class="col-6">
                             <a href="{{route('admin.penyakit.index')}}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a>
@@ -54,7 +54,7 @@
                     </div>
 
                 </div>
-            </form>
+            </form> --}}
         </div>
     </div>
 </section>

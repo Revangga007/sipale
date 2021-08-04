@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBasisPengetahuanTable extends Migration
+class CreatePasiensTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateBasisPengetahuanTable extends Migration
      */
     public function up()
     {
-        Schema::create('basis_pengetahuan', function (Blueprint $table) {
+        Schema::create('pasiens', function (Blueprint $table) {
             $table->id();
-            $table->char('kode', 5)->unique();
-            $table->foreignId('gejala_id');
-            $table->foreignId('penyakit_id');
-            $table->float('mb');
-            $table->float('md');
+            $table->string('nama');
+            $table->longText('Alamat');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateBasisPengetahuanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('basis_pengetahuan');
+        Schema::dropIfExists('pasiens');
     }
 }

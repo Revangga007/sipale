@@ -82,7 +82,7 @@
 
                 </div>
                 <div class="card-footer text-right">
-                    <a href="{{route('admin.penyakit.index')}}" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Kembali</a>
+                    <a href="{{route('admin.bp.index')}}" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Kembali</a>
                     <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Simpan</button>
                 </div>
             </form>

@@ -17,7 +17,7 @@ class CreatePenyakitTable extends Migration
             $table->id();
             $table->char('kode', 4)->unique();
             $table->string('nama');
-            $table->longText('Deskripsi');
+            $table->longText('deskripsi');
             $table->timestamps();
         });
     }
