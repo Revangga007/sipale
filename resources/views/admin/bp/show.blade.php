@@ -29,32 +29,32 @@
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col">
-                        {{-- <p><strong>Deskripsi Penyakit :</strong></p>
-                        <p>{!! $penyakit->deskripsi !!}</p> --}}
+                    <div class="col-9">
+                        <p><strong>MB :</strong></p>
+                        <p>{{$bp->mb}}</p>
+                    </div>
+                    <div class="col-3">
+                        <p><strong>MD :</strong></p>
+                        <p>{{$bp->md}}</p>
                     </div>
                 </div>
-
-
             </div>
-                {{-- <div class="card-footer">
-                    <div class="row">
-                        <div class="col-6">
-                            <a href="{{route('admin.penyakit.index')}}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a>
-                        </div>
-                        <div class="col-6 text-right">
-                            <a href="{{route('admin.penyakit.edit', $penyakit->id)}}" class="btn btn-warning"><i class="fa fa-edit"></i> Edit</a>
-                            <form action="{{route('admin.penyakit.destroy', $penyakit->id)}}" id="delete_{{$penyakit->id}}" method="POST" class="d-inline">
-                              @csrf
-                              @method('DELETE')
-                                <input type="hidden" name="id" value="{{$penyakit->id}}">
-                                <button type="button" class="btn btn-danger btn-hapus" value="{{$penyakit->id}}"><i class="fa fa-trash"></i> Hapus</button>
-                            </form>
-                        </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-6">
+                        <a href="{{route('admin.bp.index')}}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a>
                     </div>
-
+                    <div class="col-6 text-right">
+                        <a href="{{route('admin.bp.edit', $bp->id)}}" class="btn btn-warning"><i class="fa fa-edit"></i> Edit</a>
+                        <form action="{{route('admin.bp.destroy', $bp->id)}}" id="delete_{{$bp->id}}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" name="id" value="{{$bp->id}}">
+                            <button type="button" class="btn btn-danger btn-hapus" value="{{$bp->id}}"><i class="fa fa-trash"></i> Hapus</button>
+                        </form>
+                    </div>
                 </div>
-            </form> --}}
+            </div>
         </div>
     </div>
 </section>
