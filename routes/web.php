@@ -21,7 +21,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'admin', 'as' => 'admin.', 'mi
     Route::resource('penyakit', PenyakitController::class);
     Route::resource('bp', BasisPengetahuanController::class);
     Route::resource('pasien', PasienController::class);
-    Route::resource('berita', BeritaController::class);
+    Route::resource('akun', AkunController::class);
 });
 
 

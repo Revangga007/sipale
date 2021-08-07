@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Models\Akun;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class AkunController extends Controller
+class AkunController extends AdminController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public $title = 'Akun';
+
     public function index()
     {
-        //
+        $title = $this->title;
+        $akuns = User::all();
+        return view('admin.akun.index', compact('title', 'akuns'));
     }
 
     /**
@@ -24,7 +24,8 @@ class AkunController extends Controller
      */
     public function create()
     {
-        //
+        $title = $this->title;
+        return view('admin.akun.create', compact('title'));
     }
 
     /**
@@ -35,7 +36,7 @@ class AkunController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        \Str::random(60);
     }
 
     /**

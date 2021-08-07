@@ -16,7 +16,7 @@
         <div class="card-header">
           <h4>Daftar {{$title}}</h4>
           <div class="card-header-action">
-            <a href="{{ route('admin.gejala.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+            <a href="{{ route('admin.akun.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
           </div>
         </div>
         <div class="card-body">
@@ -28,22 +28,24 @@
                     <th>No</th>
                     <th>Nama</th>
                     <th>Username</th>
+                    <th>Email</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($gejalas as $gejala)
+                  @foreach ($akuns as $akun)
                     <tr class="text-center">
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $gejala->nama }}</td>
-                        <td>{{ $gejala->username }}</td>
+                        <td>{{ $akun->name }}</td>
+                        <td>{{ $akun->username }}</td>
+                        <td>{{ $akun->email }}</td>
                         <td>
-                          <a class="btn btn-icon btn-warning btn-sm" href="{{route('admin.gejala.edit', $gejala->id)}}"><i class="fa fa-edit"></i></a>
-                            <form action="{{route('admin.gejala.destroy', $gejala->id)}}" id="delete_{{$gejala->id}}" method="POST" class="d-inline">
+                          <a class="btn btn-icon btn-warning btn-sm" href="{{route('admin.akun.edit', $akun->id)}}"><i class="fa fa-edit"></i></a>
+                            <form action="{{route('admin.akun.destroy', $akun->id)}}" id="delete_{{$akun->id}}" method="POST" class="d-inline">
                               @csrf
                               @method('DELETE')
-                                <input type="hidden" name="id" value="{{$gejala->id}}">
-                                <button type="button" class="btn btn-icon btn-danger btn-sm btn-hapus" value="{{$gejala->id}}"><i class="fa fa-trash"></i></button>
+                                <input type="hidden" name="id" value="{{$akun->id}}">
+                                <button type="button" class="btn btn-icon btn-danger btn-sm btn-hapus" value="{{$akun->id}}"><i class="fa fa-trash"></i></button>
                             </form>
                         </td>
                     </tr>
@@ -112,7 +114,7 @@
         console.log(response);
           Swal.fire(
             'Berhasil!',
-            'Data Gejala Berhasil Dihapus',
+            'Data akun Berhasil Dihapus',
             'success'
           )
           setTimeout(() => {

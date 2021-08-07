@@ -26,7 +26,7 @@
 
     <li class="menu-header">Support</li>
     <li class="{{ $title == 'Akun' ? 'active' : ''}}">
-      <a href="{{route('admin.berita.index')}}" class="nav-link"><i class="fas fa-user"></i><span>Akun</span></a>
+      <a href="{{route('admin.akun.index')}}" class="nav-link"><i class="fas fa-user"></i><span>Akun</span></a>
     </li>
   </ul>
 </aside>
