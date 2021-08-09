@@ -24,16 +24,16 @@
             <div class="table-responsive">
               <table class="table table-striped" id="tabel">
                 <thead>
-                  <tr class="text-center">
-                    <th>No</th>
-                    <th>Id penyakit</th>
+                  <tr>
+                    <th width="10%">No</th>
+                    <th width="12%">Id penyakit</th>
                     <th>Nama penyakit</th>
-                    <th>Aksi</th>
+                    <th width="15%">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach ($penyakits as $penyakit)
-                    <tr class="text-center">
+                    <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $penyakit->id }}</td>
                         <td>{{ $penyakit->nama }}</td>

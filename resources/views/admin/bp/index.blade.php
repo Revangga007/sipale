@@ -24,21 +24,31 @@
             <div class="table-responsive">
               <table class="table table-striped" id="tabel">
                 <thead>
-                  <tr class="text-center">
-                    <th>No</th>
+                  <tr>
+                    <th width="10%">No</th>
                     <th>Nama Gejala</th>
                     <th>Nama Penyakit</th>
-                    <th>Aksi</th>
+                    <th width="15%">MB</th>
+                    <th width="15%">MD</th>
+                    <th width="15%">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach ($bps as $bp)
-                    <tr class="text-center">
+                    <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $bp->gejala->nama }}</td>
                         <td>{{ $bp->penyakit->nama }}</td>
+                        <td>{{ $bp->mb }}</td>
+                        <td>{{ $bp->md }}</td>
                         <td>
-                          <a class="btn btn-icon btn-primary btn-sm" href="{{route('admin.bp.show', $bp->id)}}"><i class="fas fa-bars"></i></a>
+                          <a class="btn btn-icon btn-warning btn-sm" href="{{route('admin.bp.edit', $bp->id)}}"><i class="fa fa-edit"></i></a>
+                            <form action="{{route('admin.bp.destroy', $bp->id)}}" id="delete_{{$bp->id}}" method="POST" class="d-inline">
+                              @csrf
+                              @method('DELETE')
+                                <input type="hidden" name="id" value="{{$bp->id}}">
+                                <button type="button" class="btn btn-icon btn-danger btn-sm btn-hapus" value="{{$bp->id}}"><i class="fa fa-trash"></i></button>
+                            </form>
                         </td>
                     </tr>
                   @endforeach
@@ -73,6 +83,46 @@
   // Datatables
   $(document).ready(()=> {
     $('#tabel').DataTable();
+
+    $('.btn-hapus').click(function(){
+    let id = $(this).val();
+    console.log(id);
+    Swal.fire({
+      title: 'Perhatian!',
+      text: "Apakah Anda Yakin Untuk Menghapus Data?",
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonColor: 'grey',
+      confirmButtonText: 'Ya',
+      cancelButtonText: 'Tidak'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        hapusData(id);
+      }
+    })
+  })
+
+  function hapusData(id){
+    let url = $(`#delete_${id}`).attr('action');
+    let data = $(`#delete_${id}`).serialize();
+    let method = 'POST';
+    $.ajax({
+      url: url,
+      type: method,
+      data: data,
+      success: function(response){
+          Swal.fire(
+            'Berhasil!',
+            'Data Basis Pengetahuan Berhasil Dihapus',
+            'success'
+          )
+          setTimeout(() => {
+            location.reload();
+          }, 1000);
+      }
+    })
+
+  }
   });
 
 </script>

@@ -13,14 +13,20 @@ class PenyakitController extends AdminController
     public function index()
     {
         $title = $this->title;
-        $penyakits = Penyakit::all()->sortDesc();
+        $penyakits = Penyakit::all();
         return view('admin.penyakit.index', compact('title', 'penyakits'));
     }
 
     public function create()
     {
         $title = $this->title;
-        return view('admin.penyakit.create', compact('title'));
+        $generate = Penyakit::all()->count();
+        if ($generate > 0) {
+            $generateId = sprintf("P%03s", ++$generate);
+        } else if ($generate == 0) {
+            $generateId = "P001";
+        }
+        return view('admin.penyakit.create', compact('title', 'generateId'));
     }
 
     public function store(PenyakitRequest $request)

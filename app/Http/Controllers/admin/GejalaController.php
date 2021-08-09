@@ -14,7 +14,7 @@ class GejalaController extends AdminController
     public function index()
     {
         $title = $this->title;
-        $gejalas = Gejala::all()->sortDesc();
+        $gejalas = Gejala::all();
         return view('admin.gejala.index', compact('title', 'gejalas'));
     }
 
@@ -26,7 +26,13 @@ class GejalaController extends AdminController
     public function create()
     {
         $title = $this->title;
-        return view('admin.gejala.create', compact('title'));
+        $generate = Gejala::all()->count();
+        if ($generate > 0) {
+            $generateId = sprintf("G%03s", ++$generate);
+        } else if ($generate == 0) {
+            $generateId = "G001";
+        }
+        return view('admin.gejala.create', compact('title', 'generateId'));
     }
 
     /**

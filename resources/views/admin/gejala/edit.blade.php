@@ -21,7 +21,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="id">Id Gejala</label>
-                        <input type="text" class="form-control @error('id') is-invalid @enderror" id="id" name="id" value="{{ $gejala->id }}" disabled>
+                        <input type="text" class="form-control @error('id') is-invalid @enderror" id="id" name="id" value="{{ $gejala->id }}" readonly>
                         @error('id')
                         <div class="invalid-feedback">
                             {{ $message }}

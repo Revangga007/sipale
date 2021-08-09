@@ -29,13 +29,9 @@
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col-9">
-                        <p><strong>MB :</strong></p>
-                        <p>{{$bp->mb}}</p>
-                    </div>
-                    <div class="col-3">
-                        <p><strong>MD :</strong></p>
-                        <p>{{$bp->md}}</p>
+                    <div class="col">
+                        <p><strong>MB :</strong> {{$bp->mb}}</p>
+                        <p><strong>MD :</strong> {{$bp->md}}</p>
                     </div>
                 </div>
             </div>

@@ -22,18 +22,18 @@
         <div class="card-body">
           <div class="row">
             <div class="table-responsive">
-              <table class="table table-striped" id="tabel">
+              <table class="table table-striped table-bordered" id="tabel">
                 <thead>
-                  <tr class="text-center">
-                    <th>No</th>
-                    <th>Id Gejala</th>
+                  <tr>
+                    <th width='10%'>No</th>
+                    <th width='12%'>Id Gejala</th>
                     <th>Nama Gejala</th>
-                    <th>Aksi</th>
+                    <th width='15%'>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach ($gejalas as $gejala)
-                    <tr class="text-center">
+                    <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $gejala->id }}</td>
                         <td>{{ $gejala->nama }}</td>

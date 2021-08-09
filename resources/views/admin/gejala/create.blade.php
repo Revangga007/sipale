@@ -20,7 +20,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="id">Id Gejala</label>
-                        <input type="text" class="form-control @error('id') is-invalid @enderror" id="id" name="id" value="{{old('id')}}" placeholder="Masukkan Id Gejala">
+                        <input type="text" class="form-control @error('id') is-invalid @enderror" id="id" name="id" value="{{$generateId}}" readonly>
                         @error('id')
                         <div class="invalid-feedback">
                             {{ $message }}

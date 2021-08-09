@@ -21,7 +21,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="id">Id penyakit</label>
-                        <input type="text" class="form-control @error('id') is-invalid @enderror" id="id" name="id" value="{{$penyakit->id}}" disabled>
+                        <input type="text" class="form-control @error('id') is-invalid @enderror" id="id" name="id" value="{{$penyakit->id}}" readonly>
                         @error('id')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -58,7 +58,7 @@
 @endsection
 
 @push('js')
-    <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+    <script src="{{asset('assets/vendor/ckeditor/ckeditor.js')}}"></script>
 @endpush
 
 @push('script')

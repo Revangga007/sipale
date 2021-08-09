@@ -15,7 +15,7 @@ class BasisPengetahuanController extends AdminController
     public function index()
     {
         $title = $this->title;
-        $bps = BasisPengetahuan::all();
+        $bps = BasisPengetahuan::with(['gejala', 'penyakit'])->get();
         return view('admin.bp.index', compact('title', 'bps'));
     }
 
@@ -35,24 +35,32 @@ class BasisPengetahuanController extends AdminController
         return redirect(route('admin.bp.index'));
     }
 
-    public function show(BasisPengetahuan $bp)
+    // public function show(BasisPengetahuan $bp)
+    // {
+    //     $title = $this->title;
+    //     return view('admin.bp.show', compact('title', 'bp'));
+    // }
+
+    public function edit(BasisPengetahuan $bp)
     {
         $title = $this->title;
-        return view('admin.bp.show', compact('title', 'bp'));
+        $gejalas = Gejala::select('id', 'nama')->get();
+        $penyakits = Penyakit::select('id', 'nama')->get();
+        return view('admin.bp.edit', compact('bp', 'gejalas', 'penyakits', 'title'));
     }
 
-    public function edit($id)
+    public function update(Request $request, BasisPengetahuan $bp)
     {
-        $title = $this->title;
+        $data = $request->all();
+        $bp->update($data);
+        $this->notification('success', 'Berhasil', 'Data Basis Pengetahuan Berhasil Diupdate');
+        return redirect(route('admin.bp.index'));
     }
 
-    public function update(Request $request, $id)
+    public function destroy(BasisPengetahuan $bp)
     {
-        //
-    }
+        $hapus = $bp->delete();
 
-    public function destroy($id)
-    {
-        //
+        return response()->json([$hapus], 200);
     }
 }

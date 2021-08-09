@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Gejala;
+use App\Models\Penyakit;
 
 class DashboardController extends Controller
 {
@@ -17,7 +17,8 @@ class DashboardController extends Controller
     public function __invoke()
     {
         $gejalas = Gejala::all()->count();
+        $penyakits = Penyakit::all()->count();
         $title = 'Dashboard';
-        return view('admin.dashboard', compact('title', 'gejalas'));
+        return view('admin.dashboard', compact('title', 'gejalas', 'penyakits'));
     }
 }
