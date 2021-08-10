@@ -36,7 +36,6 @@ class AkunController extends AdminController
      */
     public function store(Request $request)
     {
-        \Str::random(60);
     }
 
     /**

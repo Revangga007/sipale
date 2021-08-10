@@ -25,6 +25,8 @@
           <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <div class="login-brand">
               <img src="{{asset('assets/admin/img/stisla-fill.svg')}}" alt="logo" width="100" class="shadow-light rounded-circle">
+              <br>
+              <strong>{{config('app.name')}}</strong>
             </div>
 
             <div class="card card-primary">
@@ -76,7 +78,7 @@
               </div>
             </div>
             <div class="simple-footer">
-              Copyright &copy; 2021 Sipamil
+              Copyright &copy; 2021 {{config('app.name')}}
             </div>
           </div>
         </div>

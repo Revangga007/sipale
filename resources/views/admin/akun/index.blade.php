@@ -24,20 +24,20 @@
             <div class="table-responsive">
               <table class="table table-striped" id="tabel">
                 <thead>
-                  <tr class="text-center">
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Username</th>
+                  <tr>
+                    <th width="10%">No</th>
+                    <th width="20%">Nama</th>
+                    {{-- <th>Username</th> --}}
                     <th>Email</th>
-                    <th>Aksi</th>
+                    <th width="15%">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach ($akuns as $akun)
-                    <tr class="text-center">
+                    <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $akun->name }}</td>
-                        <td>{{ $akun->username }}</td>
+                        {{-- <td>{{ $akun->username }}</td> --}}
                         <td>{{ $akun->email }}</td>
                         <td>
                           <a class="btn btn-icon btn-warning btn-sm" href="{{route('admin.akun.edit', $akun->id)}}"><i class="fa fa-edit"></i></a>

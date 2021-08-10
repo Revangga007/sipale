@@ -25,4 +25,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'admin', 'as' => 'admin.', 'mi
 });
 
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['namespace' => 'pengguna', 'as' => 'pengguna.'], function () {
+    Route::get('/', DashboardController::class)->name('dashboard');
+    Route::resource('diagnosis', DiagnosisController::class);
+});
