@@ -6,14 +6,11 @@ use Illuminate\Http\Request;
 
 class DashboardController extends PenggunaController
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public $title = 'Dashboard';
     public function __invoke(Request $request)
     {
-        //
+        $title = $this->title;
+        $bcrum = $this->bcrum('Dashboard');
+        return view('pengguna.dashboard', compact('bcrum', 'title'));
     }
 }

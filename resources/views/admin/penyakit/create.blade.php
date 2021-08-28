@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group">
                         <label for="nama">Nama penyakit</label>
-                        <input type="text" class="form-control @error('nama') is-invalid @enderror"" id="nama" name="nama" value="{{old('nama')}}" placeholder="Masukkan Nama Penyakit">
+                        <input type="text" class="form-control @error('nama') is-invalid @enderror"" id="nama" name="nama" value="{{old('nama')}}" placeholder="Masukkan Nama Penyakit" autocomplete="off">
                         @error('nama')
                         <div class="invalid-feedback">
                             {{ $message }}

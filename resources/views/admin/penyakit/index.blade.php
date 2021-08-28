@@ -36,7 +36,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $penyakit->id }}</td>
-                        <td>{{ $penyakit->nama }}</td>
+                        <td>{{ Str::title($penyakit->nama) }}</td>
                         <td>
                           <a class="btn btn-icon btn-primary btn-sm" href="{{route('admin.penyakit.show', $penyakit->id)}}"><i class="fas fa-bars"></i></a>
                         </td>

@@ -7,9 +7,17 @@
   </div>
   <ul class="sidebar-menu">
     <li class="menu-header">Dashboard</li>
-    <li class="{{ $title == 'Dashboard' ? 'active' : ''}}">
-      <a href="{{route('admin.dashboard')}}" class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a>
+    <li class="nav-item dropdown">
+    <li class="nav-item dropdown{{ $title == 'Dashboard' ? ' active' : ''}}">
+      <a href="#" class="nav-link has-dropdown"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <ul class="dropdown-menu" style="display: none;">
+        <li><a class="nav-link" href="{{route('admin.dashboard')}}">Dashboard Admin</a></li>
+        <li><a class="nav-link" href="{{route('pengguna.dashboard')}}">Dashboard Pengguna</a></li>
+      </ul>
     </li>
+    {{-- <li class="{{ $title == 'Dashboard' ? 'active' : ''}}">
+      <a href="{{route('admin.dashboard')}}" class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a>
+    </li> --}}
     <li class="menu-header">Diagnosis</li>
     <li class="{{ $title == 'Gejala' ? 'active' : ''}}">
       <a href="{{route('admin.gejala.index')}}" class="nav-link"><i class="fas fa-plus-square"></i><span>Gejala</span></a>
@@ -20,8 +28,8 @@
     <li class="{{ $title == 'Basis Pengetahuan' ? 'active' : ''}}">
       <a href="{{route('admin.bp.index')}}" class="nav-link"><i class="fas fa-book"></i><span>Basis Pengetahuan</span></a>
     </li>
-    <li class="{{ $title == 'Pasien' ? 'active' : ''}}">
-      <a href="" class="nav-link"><i class="fas fa-users"></i><span>Pasien</span></a>
+    <li class="{{ $title == 'Petani' ? 'active' : ''}}">
+      <a href="" class="nav-link"><i class="fas fa-users"></i><span>Petani</span></a>
     </li>
 
     <li class="menu-header">Support</li>

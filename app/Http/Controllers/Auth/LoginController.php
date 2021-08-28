@@ -55,6 +55,15 @@ class LoginController extends Controller
 
         return $request->wantsJson()
             ? new JsonResponse([], 204)
-            : redirect(route('login'));
+            : redirect('/');
     }
+
+    //     public function redirectPath()
+    // {
+    //     if (method_exists($this, 'redirectTo')) {
+    //         return $this->redirectTo();
+    //     }
+
+    //     return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
+    // }
 }

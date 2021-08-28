@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers;
 
-use App\Models\Pasien;
+use App\Models\Petani;
 use Illuminate\Http\Request;
-use App\Http\Controllers\admin\AdminController;
 
-class PasienController extends AdminController
+class PetaniController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,10 +41,10 @@ class PasienController extends AdminController
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pasien  $pasien
+     * @param  \App\Models\Petani  $petani
      * @return \Illuminate\Http\Response
      */
-    public function show(Pasien $pasien)
+    public function show(Petani $petani)
     {
         //
     }
@@ -53,10 +52,10 @@ class PasienController extends AdminController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pasien  $pasien
+     * @param  \App\Models\Petani  $petani
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pasien $pasien)
+    public function edit(Petani $petani)
     {
         //
     }
@@ -65,10 +64,10 @@ class PasienController extends AdminController
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pasien  $pasien
+     * @param  \App\Models\Petani  $petani
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pasien $pasien)
+    public function update(Request $request, Petani $petani)
     {
         //
     }
@@ -76,10 +75,10 @@ class PasienController extends AdminController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pasien  $pasien
+     * @param  \App\Models\Petani  $petani
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pasien $pasien)
+    public function destroy(Petani $petani)
     {
         //
     }

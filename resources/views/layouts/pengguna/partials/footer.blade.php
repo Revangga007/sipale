@@ -2,7 +2,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-6 footer-contact">
-                        <h3>Medilab</h3>
+                        <h3>{{config('app.name')}}</h3>
                         <p>
                         A108 Adam Street <br>
                         New York, NY 535022<br>

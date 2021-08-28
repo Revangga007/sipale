@@ -36,7 +36,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $gejala->id }}</td>
-                        <td>{{ $gejala->nama }}</td>
+                        <td>{{ Str::title($gejala->nama) }}</td>
                         <td>
                           <a class="btn btn-icon btn-warning btn-sm" href="{{route('admin.gejala.edit', $gejala->id)}}"><i class="fa fa-edit"></i></a>
                             <form action="{{route('admin.gejala.destroy', $gejala->id)}}" id="delete_{{$gejala->id}}" method="POST" class="d-inline">

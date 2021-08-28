@@ -73,6 +73,7 @@
                     <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
                       {{ __('Login') }}
                     </button>
+                    <a href="{{route('pengguna.dashboard')}}" class="btn btn-secondary btn-lg btn-block" tabindex="5">{{__('Kembali')}}</a>
                   </div>
                 </form>
               </div>

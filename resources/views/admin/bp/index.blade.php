@@ -37,8 +37,8 @@
                   @foreach ($bps as $bp)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $bp->gejala->nama }}</td>
-                        <td>{{ $bp->penyakit->nama }}</td>
+                        <td>{{ Str::title($bp->gejala->nama) }}</td>
+                        <td>{{ Str::title($bp->penyakit->nama) }}</td>
                         <td>{{ $bp->mb }}</td>
                         <td>{{ $bp->md }}</td>
                         <td>
