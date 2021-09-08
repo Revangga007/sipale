@@ -27,11 +27,12 @@
             <ul>
                 <li><a href="{{ route('pengguna.dashboard') }}">Dashboard</a></li>
                 <li class="{{ $title == 'Diagnosis' ? 'active' : null }}">
-                    <a href="#">Diagnosa</a>
+                    <a href="{{ route('pengguna.diagnosa.index') }}">Diagnosa</a>
                 </li>
                 <li><a href="#penyakit">Info penyakit</a></li>
-                <li><a href="#tentang">Tentang</a></li>
-                <li><a href="#kontak">Kontak</a>
+                <li><a href="{{ route('pengguna.dashboard') }}#tentang">Tentang</a></li>
+                <li class="{{ $title == 'Kontak' ? 'active' : null }}">
+                    <a href="{{ route('pengguna.pesan.index') }}">Kontak</a>
                 </li>
             </ul>
         </nav><!-- .nav-menu -->

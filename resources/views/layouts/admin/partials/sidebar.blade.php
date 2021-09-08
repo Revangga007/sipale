@@ -33,8 +33,8 @@
             <a href="{{ route('admin.bp.index') }}" class="nav-link"><i class="fas fa-book"></i><span>Basis
                     Pengetahuan</span></a>
         </li>
-        <li class="{{ $title == 'Petani' ? 'active' : '' }}">
-            <a href="" class="nav-link"><i class="fas fa-users"></i><span>Petani</span></a>
+        <li class="{{ $title == 'Diagnosa' ? 'active' : '' }}">
+            <a href="" class="nav-link"><i class="fas fa-users"></i><span>Diagnosa</span></a>
         </li>
 
         <li class="menu-header">Support</li>
@@ -43,8 +43,8 @@
                 <i class="fas fa-user"></i><span>Akun</span>
             </a>
         </li>
-        <li class="{{ $title == 'Akun' ? 'active' : '' }}">
-            <a href="{{ route('admin.akun.index') }}" class="nav-link">
+        <li class="{{ $title == 'Pesan' ? 'active' : '' }}">
+            <a href="{{ route('admin.pesan.index') }}" class="nav-link">
                 <i class="fas fa-envelope"></i><span>Pesan</span>
             </a>
         </li>

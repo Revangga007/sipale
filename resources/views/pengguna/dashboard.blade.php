@@ -15,7 +15,9 @@ hi
 </div> --}}
     <section id="tentang" class="about">
         <div class="container-fluid">
-
+            <div class="section-title">
+                <h2>Tentang</h2>
+            </div>
             <div class="row">
                 <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch">
                     <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video"
@@ -32,7 +34,8 @@ hi
                     <div class="icon-box">
                         <div class="icon"><i class="bx bx-fingerprint"></i></div>
                         <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-                        <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi
+                        <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias
+                            excepturi
                             sint occaecati cupiditate non provident</p>
                     </div>
 

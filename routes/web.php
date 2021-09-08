@@ -22,10 +22,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'admin', 'as' => 'admin.', 'mi
     Route::resource('bp', BasisPengetahuanController::class);
     Route::resource('pasien', PasienController::class);
     Route::resource('akun', AkunController::class);
+    Route::resource('pesan', PesanController::class);
 });
 
 
 Route::group(['namespace' => 'pengguna', 'as' => 'pengguna.'], function () {
     Route::get('/', DashboardController::class)->name('dashboard');
-    Route::resource('diagnosis', DiagnosisController::class);
+    Route::resource('diagnosa', DiagnosaController::class);
+    Route::resource('pesan', PesanController::class);
 });

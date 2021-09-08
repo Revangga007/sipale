@@ -84,6 +84,8 @@
     <script src="{{ asset('assets/pengguna/js/main.js') }}"></script>
     @stack('script')
 
+    @include('layouts.pengguna.partials.flash')
+
 </body>
 
 </html>

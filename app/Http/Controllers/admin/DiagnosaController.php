@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
-use App\Models\Petani;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PetaniController extends Controller
+class DiagnosaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class PetaniController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Petani  $petani
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Petani $petani)
+    public function show($id)
     {
         //
     }
@@ -52,10 +52,10 @@ class PetaniController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Petani  $petani
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Petani $petani)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +64,10 @@ class PetaniController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Petani  $petani
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Petani $petani)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +75,10 @@ class PetaniController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Petani  $petani
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Petani $petani)
+    public function destroy($id)
     {
         //
     }
