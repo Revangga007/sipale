@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Gejala;
 use App\Models\Penyakit;
+use App\Models\Pesan;
 
 class DashboardController extends Controller
 {
@@ -18,7 +19,8 @@ class DashboardController extends Controller
     {
         $gejalas = Gejala::all()->count();
         $penyakits = Penyakit::all()->count();
+        $pesans = Pesan::all()->count();
         $title = 'Dashboard';
-        return view('admin.dashboard', compact('title', 'gejalas', 'penyakits'));
+        return view('admin.dashboard', compact('title', 'gejalas', 'penyakits', 'pesans'));
     }
 }

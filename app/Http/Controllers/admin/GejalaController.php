@@ -98,7 +98,7 @@ class GejalaController extends AdminController
     {
         // try {
         $hapus = $gejala->delete();
-
-        return response()->json([$hapus], 200);
+        $this->notification('success', 'Berhasil', 'Data Gejala Berhasil Dihapus');
+        return redirect(route('admin.gejala.index'));
     }
 }

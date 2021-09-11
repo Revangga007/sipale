@@ -55,9 +55,10 @@ class AkunController extends AdminController
      * @param  \App\Models\Akun  $akun
      * @return \Illuminate\Http\Response
      */
-    public function edit(Akun $akun)
+    public function edit(User $user)
     {
-        //
+        $title = $this->title;
+        return view('admin.akun.edit', compact('user'));
     }
 
     /**
@@ -67,7 +68,7 @@ class AkunController extends AdminController
      * @param  \App\Models\Akun  $akun
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Akun $akun)
+    public function update(Request $request, User $user)
     {
         //
     }

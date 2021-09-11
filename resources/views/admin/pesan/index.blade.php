@@ -25,10 +25,11 @@
                             <table class="table table-striped" id="tabel">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
+                                        <th width="10%">No</th>
                                         <th>Nama Pengirim</th>
                                         <th>Email</th>
-                                        <th>Aksi</th>
+                                        <th width="20%">Tanggal</th>
+                                        <th width="19%">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -37,8 +38,21 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $pesan->nama }}</td>
                                             <td>{{ $pesan->email }}</td>
+                                            <td>{{ Carbon\carbon::parse($pesan->created_at)->isoFormat('D MMMM Y') }}</td>
                                             <td>
-                                                {{-- <a class="btn btn-icon btn-primary btn-sm" href="{{route('admin.penyakit.show', $penyakit->id)}}"><i class="fas fa-bars"></i></a> --}}
+                                                <a class="btn btn-icon btn-primary btn-sm"
+                                                    href="{{ route('admin.pesan.show', $pesan->id) }}">
+                                                    <i class="fas fa-bars"></i> Detail
+                                                </a>
+                                                <form action="{{ route('admin.pesan.destroy', $pesan->id) }}"
+                                                    id="delete_{{ $pesan->id }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <input type="hidden" name="id" value="{{ $pesan->id }}">
+                                                    <button type="button" class="btn btn-icon btn-danger btn-sm btn-hapus"
+                                                        value="{{ $pesan->id }}"><i class="fa fa-trash"></i>
+                                                        Hapus</button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -74,5 +88,47 @@
         $(document).ready(() => {
             $('#tabel').DataTable();
         });
+
+        $('.btn-hapus').click(function() {
+            let id = $(this).val();
+            console.log(id);
+            Swal.fire({
+                title: 'Perhatian!',
+                text: "Apakah Anda Yakin Untuk Menghapus Data?",
+                icon: 'warning',
+                showCancelButton: true,
+                cancelButtonColor: 'grey',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    hapusData(id);
+                }
+            })
+        })
+
+        function hapusData(id) {
+            let url = $(`#delete_${id}`).attr('action');
+            let data = $(`#delete_${id}`).serialize();
+            let method = 'POST';
+            console.log(url, data, method);
+            $.ajax({
+                url: url,
+                type: method,
+                data: data,
+                success: function(response) {
+                    console.log(response);
+                    Swal.fire(
+                        'Berhasil!',
+                        'Data Pesan Berhasil Dihapus',
+                        'success'
+                    )
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1000);
+                }
+            })
+
+        }
     </script>
 @endpush
