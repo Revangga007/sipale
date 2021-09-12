@@ -13,7 +13,7 @@ class PenyakitController extends AdminController
     public function index()
     {
         $title = $this->title;
-        $penyakits = Penyakit::all();
+        $penyakits = Penyakit::latest()->get();
         return view('admin.penyakit.index', compact('title', 'penyakits'));
     }
 

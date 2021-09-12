@@ -26,10 +26,10 @@ hi
 
                 <div
                     class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
-                    <h3 class="text-center">{{ Str::upper(config('app.name')) }}</h3>
-                    <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima
-                        temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi. Libero laboriosam
-                        sint et id nulla tenetur. Suscipit aut voluptate.</p>
+                    <h3>{{ Str::upper(config('app.name')) }}</h3>
+                    <p>Banyak masyarakat Kabupaten Batang memiliki hewan peliharaan. Akan tetapi, tidak diimbangi dengan
+                        pengetahuan mendalam tentang perawatan hewan yang dimilikinya. Untuk itulah aplikasi ini dibangun
+                        untuk membantu diagnosa pada hewan peliharaan masyarakat Kabupaten Batang.</p>
 
                     <div class="icon-box">
                         <div class="icon"><i class="bx bx-fingerprint"></i></div>

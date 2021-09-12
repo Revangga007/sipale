@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin;
 use App\Models\Akun;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\admin\AdminController;
+use Illuminate\Support\Facades\Hash;
 
 class AkunController extends AdminController
 {
@@ -36,6 +38,15 @@ class AkunController extends AdminController
      */
     public function store(Request $request)
     {
+        if ($request->password == $request->password1) {
+            User::create([
+                'name' => $request->name,
+                'username' => $request->username,
+                'email' => $request->email,
+                'password' =>  Hash::make($request->password),
+            ]);
+            return redirect(route('admin.akun.index'));
+        }
     }
 
     /**
@@ -79,8 +90,10 @@ class AkunController extends AdminController
      * @param  \App\Models\Akun  $akun
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Akun $akun)
+    public function destroy($id)
     {
-        //
+        User::findOrFail($id)->delete();
+        $this->notification('success', 'Berhasil', 'Data Akun Berhasil Dihapus');
+        return redirect(route('admin.akun.index'));
     }
 }
