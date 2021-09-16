@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Gejala;
-use App\Http\Requests\GejalaRequest;
+use App\Http\Requests\admin\GejalaRequest;
 use App\Http\Controllers\admin\AdminController;
 
 

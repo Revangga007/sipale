@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\pengguna;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PenyakitRequest extends FormRequest
+class PesanRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,10 @@ class PenyakitRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|min:4|max:4',
-            'nama' => 'required|min:2',
-            'deskripsi' => 'required|min:2'
+            'nama' => 'required',
+            'email' => 'required',
+            'subjek' => 'required',
+            'pesan' => 'required'
         ];
     }
 }

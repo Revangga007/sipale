@@ -27,7 +27,7 @@
             <ul>
                 <li><a href="{{ route('pengguna.dashboard') }}">Dashboard</a></li>
                 <li class="{{ $title == 'Diagnosis' ? 'active' : null }}">
-                    <a href="{{ route('pengguna.diagnosa.index') }}">Diagnosa</a>
+                    <a href="{{ route('pengguna.biodata.index') }}">Diagnosa</a>
                 </li>
                 <li><a href="#penyakit">Info penyakit</a></li>
                 <li><a href="{{ route('pengguna.dashboard') }}#tentang">Tentang</a></li>

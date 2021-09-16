@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,8 +24,7 @@ class GejalaRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|min:4|max:4',
-            'nama' => 'required|min:2'
+            'nama' => 'required|min:2|string'
         ];
     }
 }

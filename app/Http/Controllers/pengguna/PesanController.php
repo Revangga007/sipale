@@ -4,7 +4,7 @@ namespace App\Http\Controllers\pengguna;
 
 use App\Http\Controllers\pengguna\DashboardController;
 use App\Models\Pesan;
-use Illuminate\Http\Request;
+use App\Http\Requests\pengguna\PesanRequest;
 
 class PesanController extends PenggunaController
 {
@@ -16,7 +16,7 @@ class PesanController extends PenggunaController
         return view('pengguna.pesan.create', compact('title', 'bcrum'));
     }
 
-    public function store(Request $request)
+    public function store(PesanRequest $request)
     {
         $data = $request->all();
         Pesan::create($data);

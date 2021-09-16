@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\pengguna\BiodataController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,4 +31,5 @@ Route::group(['namespace' => 'pengguna', 'as' => 'pengguna.'], function () {
     Route::get('/', DashboardController::class)->name('dashboard');
     Route::resource('diagnosa', DiagnosaController::class);
     Route::resource('pesan', PesanController::class);
+    Route::get('biodata', [BiodataController::class, 'index'])->name('biodata.index');
 });

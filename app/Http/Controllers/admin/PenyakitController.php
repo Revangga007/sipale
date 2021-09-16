@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Penyakit;
-use App\Http\Requests\PenyakitRequest;
+use App\Http\Requests\admin\PenyakitRequest;
 use App\Http\Controllers\admin\AdminController;
 
 class PenyakitController extends AdminController
@@ -37,32 +37,18 @@ class PenyakitController extends AdminController
         return redirect(route('admin.penyakit.index'));
     }
 
-
     public function show(Penyakit $penyakit)
     {
         $title = $this->title;
         return view('admin.penyakit.show', compact('title', 'penyakit'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Penyakit  $penyakit
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Penyakit $penyakit)
     {
         $title = $this->title;
         return view('admin.penyakit.edit', compact('title', 'penyakit'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Penyakit  $penyakit
-     * @return \Illuminate\Http\Response
-     */
     public function update(PenyakitRequest $request, Penyakit $penyakit)
     {
         $data = $request->all();
@@ -71,12 +57,6 @@ class PenyakitController extends AdminController
         return redirect(route('admin.penyakit.show', $penyakit->id));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Penyakit  $penyakit
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Penyakit $penyakit)
     {
         $penyakit->delete();

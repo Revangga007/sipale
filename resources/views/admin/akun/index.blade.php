@@ -36,31 +36,27 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($akuns as $akun)
-                                        @if ($akun->id != Auth::user()->id)
-                                            <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $akun->name }}</td>
-                                                {{-- <td>{{ $akun->username }}</td> --}}
-                                                <td>{{ $akun->email }}</td>
-                                                <td>
-                                                    <a class="btn btn-icon btn-warning btn-sm"
-                                                        href="{{ route('admin.akun.edit', $akun->id) }}"><i
-                                                            class="fa fa-edit"></i> Ubah</a>
-                                                    <form action="{{ route('admin.akun.destroy', $akun->id) }}"
-                                                        id="delete_{{ $akun->id }}" method="POST"
-                                                        class="d-inline">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <input type="hidden" name="id" value="{{ $akun->id }}">
-                                                        <button type="button"
-                                                            class="btn btn-icon btn-danger btn-sm btn-hapus"
-                                                            value="{{ $akun->id }}"><i class="fa fa-trash"></i>
-                                                            Hapus
-                                                        </button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        @endif
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $akun->name }}</td>
+                                            {{-- <td>{{ $akun->username }}</td> --}}
+                                            <td>{{ $akun->email }}</td>
+                                            <td>
+                                                <a class="btn btn-icon btn-warning btn-sm"
+                                                    href="{{ route('admin.akun.edit', $akun->id) }}"><i
+                                                        class="fa fa-edit"></i> Ubah</a>
+                                                <form action="{{ route('admin.akun.destroy', $akun->id) }}"
+                                                    id="delete_{{ $akun->id }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <input type="hidden" name="id" value="{{ $akun->id }}">
+                                                    <button type="button" class="btn btn-icon btn-danger btn-sm btn-hapus"
+                                                        value="{{ $akun->id }}"><i class="fa fa-trash"></i>
+                                                        Hapus
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>

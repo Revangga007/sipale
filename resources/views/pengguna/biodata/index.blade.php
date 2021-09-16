@@ -10,35 +10,29 @@
                         @csrf
                         {{-- <div class="row"> --}}
                         <div class="form-group">
-                            <label for="nama">Nama</label>
-                            <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama"
-                                placeholder="Masukkan Nama Lengkap">
-                            @error('nama')
+                            <label for="nama">No. KTP</label>
+                            <input type="text" class="form-control @error('nik') is-invalid" id="nik" name="nik"
+                                placeholder="Masukkan No.KTP / NIK Lengkap">
+                            @error('nik')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label for="nama">Nama</label>
+                            <input type="text" class="form-control" id="nama" name="nama"
+                                placeholder="Masukkan Nama Lengkap">
+                        </div>
+                        <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                                name="email" placeholder="Masukkan Email">
-                            @error('email')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email">
                         </div>
                         {{-- </div> --}}
                         <div class="form-group">
                             <label for="subjek">Subjek</label>
-                            <input type="text" class="form-control @error('subjek') is-invalid @enderror" id="subjek"
-                                name="subjek" placeholder="Masukkan Subjek">
-                            @error('subjek')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                            <input type="text" class="form-control" id="subjek" name="subjek"
+                                placeholder="Masukkan Subjek">
                         </div>
                         <div class="form-group">
                             <label for="pesan">Pesan</label>
