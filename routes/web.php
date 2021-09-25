@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\pengguna\BiodataController;
+use App\Http\Controllers\admin\UbahPasswordController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,12 +20,14 @@ Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
 
 Route::group(['prefix' => 'admin', 'namespace' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
     Route::get('/', DashboardController::class)->name('dashboard');
-    Route::resource('gejala', GejalaController::class);
+    Route::resource('gejala', GejalaController::class)->except('show');
     Route::resource('penyakit', PenyakitController::class);
     Route::resource('bp', BasisPengetahuanController::class);
-    Route::resource('pasien', PasienController::class);
+    // Route::resource('pasien', PasienController::class);
     Route::resource('akun', AkunController::class);
-    Route::resource('pesan', PesanController::class);
+    Route::resource('pesan', PesanController::class)->except(['create', 'store', 'edit', 'update']);
+    Route::get('password/edit/{id}', [UbahPasswordController::class, 'edit'])->name('pw.edit');
+    Route::post('password/edit/{id}', [UbahPasswordController::class, 'update'])->name('pw.update');
 });
 
 
