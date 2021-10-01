@@ -18,6 +18,7 @@ class CreatePenyakitTable extends Migration
             $table->string('nama');
             $table->longText('deskripsi');
             $table->longText('solusi');
+            $table->longText('gambar');
             $table->timestamps();
         });
     }
