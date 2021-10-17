@@ -5,7 +5,7 @@
         </a>
     </div>
     <div class="sidebar-brand sidebar-brand-sm">
-        <a href="{{ route('admin.dashboard') }}">SP</a>
+        <a href="{{ route('admin.dashboard') }}">PB</a>
     </div>
     <ul class="sidebar-menu">
         <li class="menu-header">Dashboard</li>

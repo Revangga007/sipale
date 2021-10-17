@@ -30,7 +30,8 @@
                                         <th width="10%">No</th>
                                         <th width="20%">Nama</th>
                                         {{-- <th>Username</th> --}}
-                                        <th>Email</th>
+                                        <th width="25%">Email</th>
+                                        <th>Hak Akses</th>
                                         <th width="17%">Aksi</th>
                                     </tr>
                                 </thead>
@@ -38,9 +39,10 @@
                                     @foreach ($akuns as $akun)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $akun->name }}</td>
+                                            <td>{{ Str::title($akun->name) }}</td>
                                             {{-- <td>{{ $akun->username }}</td> --}}
                                             <td>{{ $akun->email }}</td>
+                                            <td>{{ Str::title($akun->role) }}</td>
                                             <td>
                                                 <a class="btn btn-icon btn-warning btn-sm"
                                                     href="{{ route('admin.akun.edit', $akun->id) }}"><i

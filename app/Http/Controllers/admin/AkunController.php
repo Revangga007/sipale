@@ -45,6 +45,7 @@ class AkunController extends AdminController
                 'username' => $request->username,
                 'email' => $request->email,
                 'password' =>  Hash::make($request->password),
+                'role' => $request->role
             ]);
             return redirect(route('admin.akun.index'));
         }
@@ -67,10 +68,10 @@ class AkunController extends AdminController
      * @param  \App\Models\Akun  $akun
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(User $akun)
     {
         $title = $this->title;
-        return view('admin.akun.edit', compact('user'));
+        return view('admin.akun.edit', compact('akun', 'title'));
     }
 
     /**
@@ -82,7 +83,8 @@ class AkunController extends AdminController
      */
     public function update(Request $request, User $user)
     {
-        //
+        $data = $request->all();
+        $user->update($data);
     }
 
     /**

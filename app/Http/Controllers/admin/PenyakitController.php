@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Models\Penyakit;
 use App\Http\Requests\admin\PenyakitRequest;
 use App\Http\Controllers\admin\AdminController;
+use Illuminate\Support\Facades\File;
 
 class PenyakitController extends AdminController
 {
@@ -31,8 +32,17 @@ class PenyakitController extends AdminController
 
     public function store(PenyakitRequest $request)
     {
-        $data = $request->all();
-        Penyakit::create($data);
+        $file = $request->file('gambar');
+        $nama_gambar = time() . "_" . $file->getClientOriginalName();
+        $tujuan_upload = 'assets/gambar';
+        $file->move($tujuan_upload, $nama_gambar);
+        Penyakit::create([
+            'id' => $request->id,
+            'nama' => $request->nama,
+            'deskripsi' => $request->deskripsi,
+            'solusi' => $request->solusi,
+            'gambar' => $nama_gambar
+        ]);
         $this->notification('success', 'Berhasil', 'Data Penyakit Berhasil Ditambah');
         return redirect(route('admin.penyakit.index'));
     }
@@ -51,14 +61,25 @@ class PenyakitController extends AdminController
 
     public function update(PenyakitRequest $request, Penyakit $penyakit)
     {
-        $data = $request->all();
-        $penyakit->update($data);
+        File::delete('assets/gambar/' . $penyakit->gambar);
+        $file = $request->file('gambar');
+        $nama_gambar = time() . "_" . $file->getClientOriginalName();
+        $tujuan_upload = 'assets/gambar';
+        $file->move($tujuan_upload, $nama_gambar);
+        $penyakit->update([
+            'id' => $request->id,
+            'nama' => $request->nama,
+            'deskripsi' => $request->deskripsi,
+            'solusi' => $request->solusi,
+            'gambar' => $nama_gambar
+        ]);
         $this->notification('success', 'Berhasil', 'Data Penyakit Berhasil Diupdate');
         return redirect(route('admin.penyakit.show', $penyakit->id));
     }
 
     public function destroy(Penyakit $penyakit)
     {
+        File::delete('assets/gambar/' . $penyakit->gambar);
         $penyakit->delete();
         $this->notification('success', 'Berhasil', 'Data Penyakit Berhasil Dihapus');
         return redirect(route('admin.penyakit.index'));

@@ -12,7 +12,7 @@ class Penyakit extends Model
     protected $table = 'penyakit';
     public $incrementing = false;
     protected $keyType = 'string';
-    protected $fillable = ['id', 'nama', 'deskripsi'];
+    protected $fillable = ['id', 'nama', 'deskripsi', 'solusi', 'gambar'];
 
     public function basis_pengetahuan()
     {

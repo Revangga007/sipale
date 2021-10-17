@@ -5,6 +5,7 @@ namespace App\Http\Controllers\pengguna;
 use App\Http\Controllers\pengguna\PenggunaController;
 use Illuminate\Http\Request;
 
+
 class BiodataController extends PenggunaController
 {
     protected $title = "Biodata";
@@ -18,6 +19,18 @@ class BiodataController extends PenggunaController
 
     public function store(Request $request)
     {
-        $data = $request->all();
+        Session([
+            'biodata' => [
+                'nik' => $request->nik,
+                'nama_pemilik' => $request->nama_pemilik,
+                'no_hp' => $request->no_hp,
+                'alamat' => $request->alamat,
+                'nama_peliharaan' => $request->nama_peliharaan,
+                'jekel' => $request->jekel,
+                'berat' => $request->berat,
+                'suhu' => $request->suhu
+            ]
+        ]);
+        return redirect()->route('pengguna.diagnosa.index');
     }
 }

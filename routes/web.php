@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\pengguna\BiodataController;
+use App\Http\Controllers\pengguna\DiagnosaController;
 use App\Http\Controllers\admin\UbahPasswordController;
 
 /*
@@ -33,7 +34,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'admin', 'as' => 'admin.', 'mi
 
 Route::group(['namespace' => 'pengguna', 'as' => 'pengguna.'], function () {
     Route::get('/', DashboardController::class)->name('dashboard');
-    Route::resource('diagnosa', DiagnosaController::class);
     Route::resource('pesan', PesanController::class);
     Route::get('biodata', [BiodataController::class, 'index'])->name('biodata.index');
+    Route::post('biodata', [BiodataController::class, 'store'])->name('biodata.store');
+    Route::get('diagnosa', [DiagnosaController::class, 'index'])->name('diagnosa.index')->middleware('diagnosa');
 });

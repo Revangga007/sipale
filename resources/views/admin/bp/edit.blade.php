@@ -1,53 +1,58 @@
 @extends('layouts.admin.main')
 
 @section('title')
-    {{$title}}
+    {{ $title }}
 @endsection
 
 @section('content')
-<section class="section">
-    <div class="section-header">
-      <h1>{{$title}}</h1>
-    </div>
+    <section class="section">
+        <div class="section-header">
+            <h1>{{ $title }}</h1>
+        </div>
 
-     <div class="section-body">
-        <div class="card card-primary">
-            <div class="card-header">
-                <h4>Edit {{$title}}</h4>
-            </div>
-            <form action="{{route('admin.bp.update', $bp->id)}}" method="post">
-                @method('PUT')
-                @csrf
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="gejala">Nama Gejala</label>
-                        <select class="form-control cb @error('gejala_id') is-invalid @enderror" id="gejala" name="gejala_id">
-                            <option disabled>-- Pilih Gejala --</option>
-                            @foreach ($gejalas as $gejala)
-                            <option value="{{$gejala->id}}" {{$gejala->id ?? 'selected'}}>{{$gejala->nama}}</option>
-                            @endforeach
-                        </select>
-                        @error('gejala_id')
-                        <div class="invalid-feedback">
-                            {{ $message }}
+        <div class="section-body">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h4>Edit {{ $title }}</h4>
+                </div>
+                <form action="{{ route('admin.bp.update', $bp->id) }}" method="post">
+                    @method('PUT')
+                    @csrf
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="gejala">Nama Gejala</label>
+                            <select class="form-control cb @error('gejala_id') is-invalid @enderror" id="gejala"
+                                name="gejala_id">
+                                <option disabled>-- Pilih Gejala --</option>
+                                @foreach ($gejalas as $gejala)
+                                    <option value="{{ $gejala->id }}" {{ $gejala->id ?? 'selected' }}>
+                                        {{ $gejala->nama }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('gejala_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="penyakit">Nama Penyakit</label>
-                        <select class="form-control cb @error('gejala_id') is-invalid @enderror" id="penyakit" name="penyakit_id">
-                            <option disabled>-- Pilih Penyakit --</option>
-                            @foreach ($penyakits as $penyakit)
-                            <option value="{{$penyakit->id}}" {{$penyakit->id ?? 'selected'}}>{{$penyakit->nama}}</option>
-                            @endforeach
-                        </select>
-                        @error('penyakit_id')
-                        <div class="invalid-feedback">
-                            {{ $message }}
+                        <div class="form-group">
+                            <label for="penyakit">Nama Penyakit</label>
+                            <select class="form-control cb @error('gejala_id') is-invalid @enderror" id="penyakit"
+                                name="penyakit_id">
+                                <option disabled>-- Pilih Penyakit --</option>
+                                @foreach ($penyakits as $penyakit)
+                                    <option value="{{ $penyakit->id }}" {{ $penyakit->id ?? 'selected' }}>
+                                        {{ $penyakit->nama }}</option>
+                                @endforeach
+                            </select>
+                            @error('penyakit_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
-                        @enderror
-                    </div>
-                    <div class="row">
+                        {{-- <div class="row">
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="mb">MB</label>
@@ -70,17 +75,29 @@
                                 @enderror
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
+                        <div class="form-group">
+                            <label for="cf">Faktor Kepastian (CF)</label>
+                            <input type="number" step="0.01" min="0" max="1"
+                                class="form-control @error('cf') is-invalid @enderror" id="cf" name="cf"
+                                value="{{ $bp->cf }}">
+                            @error('cf')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
 
-                </div>
-                <div class="card-footer text-right">
-                    <a href="{{route('admin.bp.index')}}" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Kembali</a>
-                    <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Simpan</button>
-                </div>
-            </form>
+                    </div>
+                    <div class="card-footer text-right">
+                        <a href="{{ route('admin.bp.index') }}" class="btn btn-danger"><i class="fas fa-arrow-left"></i>
+                            Kembali</a>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Simpan</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 @endsection
 
 @push('css')
@@ -93,9 +110,8 @@
 
 @push('script')
     <script>
-        $(document).ready(()=> {
+        $(document).ready(() => {
             $(".cb").select2();
         });
     </script>
 @endpush
-

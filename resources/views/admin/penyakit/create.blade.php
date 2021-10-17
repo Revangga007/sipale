@@ -15,7 +15,7 @@
                 <div class="card-header">
                     <h4>Tambah {{ $title }}</h4>
                 </div>
-                <form action="{{ route('admin.penyakit.store') }}" method="post">
+                <form action="{{ route('admin.penyakit.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
@@ -60,6 +60,11 @@
                         <div class="form-group">
                             <label for="gambar">Gambar penyakit</label>
                             <input type="file" class="form-control-file" id="gambar" name="gambar">
+                            @error('gambar')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                     </div>
                     <div class="card-footer text-right">

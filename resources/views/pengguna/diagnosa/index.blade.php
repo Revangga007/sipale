@@ -3,9 +3,8 @@
 @section('content')
     <section class="inn">
         <div class="container">
-            <p>
-                Example inner page template
-            </p>
+            123456789
+            {{ Session('biodata')['alamat'] }}
         </div>
     </section>
 

@@ -9,7 +9,7 @@ class DiagnosaController extends PenggunaController
 {
     public $title = "Diagnosa";
 
-    public function create()
+    public function index()
     {
         $title = $this->title;
         $bcrum = $this->bcrum('Diagnosa');

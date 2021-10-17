@@ -14,13 +14,13 @@
                 <div class="card-header">
                     <h4>Tambah {{ $title }}</h4>
                 </div>
-                <form action="{{ route('admin.akun.store') }}" method="post">
+                <form action="{{ route('admin.akun.update', $akun->id) }}" method="post">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
                             <label for="nama">Nama</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="nama" name="name"
-                                placeholder="Masukkan Nama Lengkap">
+                                placeholder="Masukkan Nama Lengkap" value="{{ $akun->name }}">
                             @error('name')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -30,7 +30,7 @@
                         <div class="form-group">
                             <label for="username">Username</label>
                             <input type="text" class="form-control @error('username') is-invalid @enderror" id="username"
-                                name="username" placeholder="Masukkan username">
+                                name="username" placeholder="Masukkan username" value="{{ $akun->username }}">
                             @error('username')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -40,45 +40,19 @@
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                                name="email" placeholder="Masukkan Email">
+                                name="email" placeholder="Masukkan Email" value="{{ $akun->email }}">
                             @error('email')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                        id="password" name="password" placeholder="Masukkan Password">
-                                    @error('email')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="password1">Konfirmasi Password</label>
-                                    <input type="password" class="form-control @error('password1') is-invalid @enderror"
-                                        id="password1" name="password1" placeholder="Masukkan Konfirmasi Password">
-                                    @error('password1')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
                         <div class="form-group">
                             <label for="role">Hak Akses</label>
                             <select name="role" id="role" class="form-control">
-                                <option value="admin" selected disabled>Pilih hak akses</option>
-                                <option value="admin">Admin</option>
-                                <option value="pakar">Pakar</option>
+                                <option value="admin" disabled>-- Pilih hak akses --</option>
+                                <option value="admin" {{ $akun->role == 'admin' ?? null }}>Admin</option>
+                                <option value="pakar" {{ $akun->role == 'pakar' ?? null }}>Pakar</option>
                             </select>
                             @error('role')
                                 <div class="invalid-feedback">
