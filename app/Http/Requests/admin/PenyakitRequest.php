@@ -26,7 +26,8 @@ class PenyakitRequest extends FormRequest
         return [
             'nama' => 'required|min:2|string',
             'deskripsi' => 'required|min:2|string',
-            'gambar' => 'required|file|image|mimes:jpeg,png,jpg'
+            'solusi' => 'required',
+            'gambar' => 'file|image|mimes:jpeg,png,jpg'
         ];
     }
 }

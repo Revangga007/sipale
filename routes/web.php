@@ -34,8 +34,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'admin', 'as' => 'admin.', 'mi
 
 Route::group(['namespace' => 'pengguna', 'as' => 'pengguna.'], function () {
     Route::get('/', DashboardController::class)->name('dashboard');
+    Route::resource('penyakit', PenyakitController::class)->except(['create', 'store', 'edit', 'update', 'delete']);
     Route::resource('pesan', PesanController::class);
-    Route::get('biodata', [BiodataController::class, 'index'])->name('biodata.index');
+    Route::get('biodata', [BiodataController::class, 'index'])->name('biodata.index')->middleware('biodata');
     Route::post('biodata', [BiodataController::class, 'store'])->name('biodata.store');
     Route::get('diagnosa', [DiagnosaController::class, 'index'])->name('diagnosa.index')->middleware('diagnosa');
+    Route::get('diagnosa/reset', [DiagnosaController::class, 'reset'])->name('diagnosa.reset')->middleware('diagnosa');
 });

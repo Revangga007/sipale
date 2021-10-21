@@ -59,7 +59,7 @@
                         </div>
                         <div class="form-group">
                             <label for="gambar">Gambar penyakit</label>
-                            <input type="file" class="form-control-file" id="gambar" name="gambar">
+                            <input type="file" class="form-control-file" id="gambar" name="gambar" required>
                             @error('gambar')
                                 <div class="invalid-feedback">
                                     {{ $message }}

@@ -20,7 +20,7 @@ class PenyakitController extends PenggunaController
     public function show(Penyakit $penyakit)
     {
         $title = $this->title;
-        $bcrum = $this->bcrum($penyakit->nama, route('pengguna.info.index'), $title);
+        $bcrum = $this->bcrum($penyakit->nama, route('pengguna.penyakit.index'), $title);
         return view('pengguna.penyakit.show', compact('penyakit', 'title', 'bcrum'));
     }
 }

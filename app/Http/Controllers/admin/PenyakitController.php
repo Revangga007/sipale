@@ -61,18 +61,20 @@ class PenyakitController extends AdminController
 
     public function update(PenyakitRequest $request, Penyakit $penyakit)
     {
-        File::delete('assets/gambar/' . $penyakit->gambar);
-        $file = $request->file('gambar');
-        $nama_gambar = time() . "_" . $file->getClientOriginalName();
-        $tujuan_upload = 'assets/gambar';
-        $file->move($tujuan_upload, $nama_gambar);
         $penyakit->update([
-            'id' => $request->id,
             'nama' => $request->nama,
             'deskripsi' => $request->deskripsi,
-            'solusi' => $request->solusi,
-            'gambar' => $nama_gambar
+            'solusi' => $request->solusi
         ]);
+        if ($request->file('gambar')) {
+            File::delete('assets/gambar/' . $penyakit->gambar);
+            $gambar = time() . "_" . $request->file('gambar')->getClientOriginalName();
+            $directory = 'assets/gambar';
+            $request->file('gambar')->move($directory, $gambar);
+            $penyakit->update([
+                'gambar' => $gambar
+            ]);
+        }
         $this->notification('success', 'Berhasil', 'Data Penyakit Berhasil Diupdate');
         return redirect(route('admin.penyakit.show', $penyakit->id));
     }

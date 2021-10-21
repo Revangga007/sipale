@@ -6,6 +6,7 @@
         </ul>
     </form>
     <ul class="navbar-nav navbar-right">
+        <div class=" d-md-none d-lg-none text-white">{{ Auth::user()->name }}</div>
         <li class="dropdown"><a href="#" data-toggle="dropdown"
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div>
