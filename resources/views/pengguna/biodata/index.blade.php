@@ -86,6 +86,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="berat">Umur Peliharaan (Bulan)</label>
+                                    <input type="number" class="form-control" id="umur" name="umur"
+                                        placeholder="Masukkan Umur Peliharaan (Bulan)" value="0">
+                                    <small>*Jika tidak diketahui masukkan angka 0</small>
+                                </div>
+                                <div class="form-group">
                                     <label for="berat">Berat Badan</label>
                                     <input type="number" class="form-control" id="berat" name="berat"
                                         placeholder="Masukkan Berat Badan Peliharaan" value="0">

@@ -47,24 +47,12 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="form-group">
-                            <label for="role">Hak Akses</label>
-                            <select name="role" id="role" class="form-control">
-                                <option value="admin" disabled>-- Pilih hak akses --</option>
-                                <option value="admin" {{ $akun->role == 'admin' ?? null }}>Admin</option>
-                                <option value="pakar" {{ $akun->role == 'pakar' ?? null }}>Pakar</option>
-                            </select>
-                            @error('role')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
                         <div class="card-footer text-right">
                             <a href="{{ route('admin.akun.index') }}" class="btn btn-danger">
                                 <i class="fas fa-arrow-left"></i> Kembali</a>
                             <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Simpan</button>
                         </div>
+                    </div>
                 </form>
             </div>
         </div>

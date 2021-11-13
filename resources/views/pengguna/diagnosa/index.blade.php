@@ -8,6 +8,11 @@
                     <h3 class="mb-4 mb-4">Identitas Pemilik:</h3>
                     <table border="0" class="table">
                         <tr>
+                            <td>NIK Pemilik</td>
+                            <td>:</td>
+                            <td>{{ Str::title(Session('biodata')['nik']) }}</td>
+                        </tr>
+                        <tr>
                             <td>Nama Pemilik</td>
                             <td>:</td>
                             <td>{{ Str::title(Session('biodata')['nama_pemilik']) }}</td>
@@ -39,6 +44,12 @@
                         <tr>
                             <td>Berat</td>
                             <td>:</td>
+                            <td>{{ Session('biodata')['umur'] != 0 ? Session('biodata')['umur'] . ' Bulan' : 'Tidak diketahui' }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Berat</td>
+                            <td>:</td>
                             <td>{{ Session('biodata')['berat'] != 0 ? Session('biodata')['berat'] . ' Kg' : 'Tidak diketahui' }}
                             </td>
                         </tr>
@@ -58,42 +69,42 @@
                         <p>Silahkan pilih gejala sesuai dengan kondisi kucing peliharaan anda</p>
                         <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
                     </div>
-                    <table class="table tabled-bordered">
-                        <thead class="thead-light">
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Gejala yang dialami</th>
-                                <th scope="col">Kondisi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($gejalas as $gejala)
+                    <form action="{{ route('pengguna.diagnosa.analisa') }}" method="post">
+                        @csrf
+                        <table class="table tabled-bordered">
+                            <thead class="thead-light">
                                 <tr>
-                                    <th scope="row" width="10%">{{ $loop->iteration }}</th>
-                                    <td>{{ Str::title($gejala->nama) }}</td>
-                                    <td width="25%">
-                                        <div class="form-group">
-                                            <select name="kondisi[]" id="kondisi" class="form-control">
-                                                <option disabled selected>Pilih</option>
-                                                <option value="{{ $gejala->id }}_1">Pasti</option>
-                                                <option value="{{ $gejala->id }}_2">Hampir pasti</option>
-                                                <option value="{{ $gejala->id }}_3">Mungkin</option>
-                                                <option value="{{ $gejala->id }}_4">Tidak</option>
-                                            </select>
-                                        </div>
-                                    </td>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Gejala yang dialami</th>
+                                    <th scope="col">Kondisi</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($gejalas as $gejala)
 
-                    </tbody>
-                    </table>
-
-                </div>
-                <div class="card-footer d-flex justify-content-between">
-                    <a href="{{ route('pengguna.diagnosa.reset') }}" class="btn btn-secondary">Kembali</a>
-                    <button type="submit" class="btn btn-primary">Analisa</button>
+                                    <tr>
+                                        <th scope="row" width="10%">{{ $loop->iteration }}</th>
+                                        <td>{{ Str::title($gejala->nama) }}</td>
+                                        <td width="25%">
+                                            <div class="form-group">
+                                                <select name="kondisi[]" id="kondisi" class="form-control">
+                                                    <option disabled selected>Pilih</option>
+                                                    <option value="{{ $gejala->id }}_1">Pasti</option>
+                                                    <option value="{{ $gejala->id }}_2">Hampir pasti</option>
+                                                    <option value="{{ $gejala->id }}_3">Mungkin</option>
+                                                    <option value="{{ $gejala->id }}_0">Tidak</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <div class="card-footer d-flex justify-content-between">
+                            <a href="{{ route('pengguna.diagnosa.reset') }}" class="btn btn-secondary">Kembali</a>
+                            <button type="submit" class="btn btn-primary">Analisa</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

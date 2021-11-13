@@ -27,6 +27,7 @@ class BiodataController extends PenggunaController
                 'alamat' => $request->alamat,
                 'nama_peliharaan' => $request->nama_peliharaan,
                 'jekel' => $request->jekel,
+                'umur' => $request->umur,
                 'berat' => $request->berat,
                 'suhu' => $request->suhu
             ]

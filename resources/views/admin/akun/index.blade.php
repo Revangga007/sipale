@@ -28,10 +28,9 @@
                                 <thead>
                                     <tr>
                                         <th width="10%">No</th>
-                                        <th width="20%">Nama</th>
+                                        <th>Nama</th>
                                         {{-- <th>Username</th> --}}
                                         <th width="25%">Email</th>
-                                        <th>Hak Akses</th>
                                         <th width="17%">Aksi</th>
                                     </tr>
                                 </thead>
@@ -42,7 +41,6 @@
                                             <td>{{ Str::title($akun->name) }}</td>
                                             {{-- <td>{{ $akun->username }}</td> --}}
                                             <td>{{ $akun->email }}</td>
-                                            <td>{{ Str::title($akun->role) }}</td>
                                             <td>
                                                 <a class="btn btn-icon btn-warning btn-sm"
                                                     href="{{ route('admin.akun.edit', $akun->id) }}"><i

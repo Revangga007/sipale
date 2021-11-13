@@ -6,6 +6,7 @@ use App\Models\Penyakit;
 use App\Http\Requests\admin\PenyakitRequest;
 use App\Http\Controllers\admin\AdminController;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class PenyakitController extends AdminController
 {
@@ -39,6 +40,7 @@ class PenyakitController extends AdminController
         Penyakit::create([
             'id' => $request->id,
             'nama' => $request->nama,
+            'slug' => Str::slug($request->nama),
             'deskripsi' => $request->deskripsi,
             'solusi' => $request->solusi,
             'gambar' => $nama_gambar
@@ -63,6 +65,7 @@ class PenyakitController extends AdminController
     {
         $penyakit->update([
             'nama' => $request->nama,
+            'nama' => Str::slug($request->nama),
             'deskripsi' => $request->deskripsi,
             'solusi' => $request->solusi
         ]);

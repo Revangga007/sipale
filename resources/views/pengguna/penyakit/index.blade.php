@@ -10,19 +10,17 @@
                         <img src="{{ asset('assets/gambar/' . $penyakit->gambar) }}" class="card-img-top"
                             alt="{{ $penyakit->nama }}">
                         <div class="card-body">
-                            <a href="{{ route('pengguna.penyakit.show', $penyakit->id) }}">
+                            <a href="{{ route('pengguna.penyakit.show', $penyakit->slug) }}">
                                 <h5 class="card-title"><strong>{{ Str::title($penyakit->nama) }}</strong></h5>
                             </a>
                             <small class="text-muted">{{ $penyakit->created_at->diffForHumans() }}</small>
                             <p class="card-text">{!! Str::limit($penyakit->deskripsi, 100) !!}</p>
                             <hr>
                             <div class="detail text-right">
-                                <a href="{{ route('pengguna.penyakit.show', $penyakit->id) }}"
+                                <a href="{{ route('pengguna.penyakit.show', $penyakit->slug) }}"
                                     class="btn btn-primary">Selengkapnya</a>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             @endforeach

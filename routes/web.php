@@ -31,13 +31,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'admin', 'as' => 'admin.', 'mi
     Route::post('password/edit/{id}', [UbahPasswordController::class, 'update'])->name('pw.update');
 });
 
+use App\Http\Controllers\pengguna\PenyakitController;
 
 Route::group(['namespace' => 'pengguna', 'as' => 'pengguna.'], function () {
     Route::get('/', DashboardController::class)->name('dashboard');
-    Route::resource('penyakit', PenyakitController::class)->except(['create', 'store', 'edit', 'update', 'delete']);
+    Route::get('penyakit', [PenyakitController::class, 'index'])->name('penyakit.index');
+    Route::get('penyakit/{penyakit:slug}', [PenyakitController::class, 'show'])->name('penyakit.show');
     Route::resource('pesan', PesanController::class);
     Route::get('biodata', [BiodataController::class, 'index'])->name('biodata.index')->middleware('biodata');
     Route::post('biodata', [BiodataController::class, 'store'])->name('biodata.store');
     Route::get('diagnosa', [DiagnosaController::class, 'index'])->name('diagnosa.index')->middleware('diagnosa');
     Route::get('diagnosa/reset', [DiagnosaController::class, 'reset'])->name('diagnosa.reset')->middleware('diagnosa');
+    Route::post('diagnosa/analisa', [DiagnosaController::class, 'analisa'])->name('diagnosa.analisa')->middleware('diagnosa');
 });

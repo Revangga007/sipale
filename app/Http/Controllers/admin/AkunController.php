@@ -45,7 +45,6 @@ class AkunController extends AdminController
                 'username' => $request->username,
                 'email' => $request->email,
                 'password' =>  Hash::make($request->password),
-                'role' => $request->role
             ]);
             return redirect(route('admin.akun.index'));
         }
