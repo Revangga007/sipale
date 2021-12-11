@@ -29,7 +29,8 @@
                                         <th width="10%">No</th>
                                         <th>Nama Gejala</th>
                                         <th>Nama Penyakit</th>
-                                        <th width="10%">CF</th>
+                                        <th width="10%">MB</th>
+                                        <th width="10%">MD</th>
                                         <th width="17%">Aksi</th>
                                     </tr>
                                 </thead>
@@ -39,7 +40,8 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ Str::title($bp->gejala->nama) }}</td>
                                             <td>{{ Str::title($bp->penyakit->nama) }}</td>
-                                            <td>{{ $bp->cf }}</td>
+                                            <td>{{ $bp->mb }}</td>
+                                            <td>{{ $bp->md }}</td>
                                             <td>
                                                 <a class="btn btn-icon btn-warning btn-sm"
                                                     href="{{ route('admin.bp.edit', $bp->id) }}"><i

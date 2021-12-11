@@ -17,9 +17,8 @@ class CreateBasisPengetahuanTable extends Migration
             $table->id();
             $table->char('gejala_id');
             $table->char('penyakit_id');
-            $table->double('cf');
-            // $table->float('mb');
-            // $table->float('md');
+            $table->float('mb');
+            $table->float('md');
             $table->timestamps();
         });
     }

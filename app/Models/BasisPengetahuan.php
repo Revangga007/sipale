@@ -11,7 +11,7 @@ class BasisPengetahuan extends Model
 
     protected $table = 'basis_pengetahuan';
 
-    protected $fillable = ['gejala_id', 'penyakit_id', 'cf'];
+    protected $fillable = ['gejala_id', 'penyakit_id', 'mb', 'md'];
 
     public function gejala()
     {

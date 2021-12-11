@@ -10,8 +10,6 @@ class Diagnosa extends Model
     use HasFactory;
 
     protected $table = "diagnosa";
-
-    public function getGroup()
-    {
-    }
+    protected $fillable = ['nik', 'nama_pemilik', 'no_hp', 'alamat', 'nama_peliharaan', 'jekel', 'umur', 'berat',
+                            'suhu', 'penyakit_id', 'presentase'];
 }

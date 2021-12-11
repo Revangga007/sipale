@@ -4,11 +4,10 @@ namespace App\Http\Controllers\pengguna;
 
 use App\Http\Controllers\pengguna\PenggunaController;
 use App\Models\BasisPengetahuan;
+use App\Models\Diagnosa;
 use Illuminate\Http\Request;
 use App\Models\Gejala;
 use App\Models\Penyakit;
-
-use function PHPSTORM_META\map;
 
 class DiagnosaController extends PenggunaController
 {
@@ -24,10 +23,6 @@ class DiagnosaController extends PenggunaController
 
     public function analisa(Request $request)
     {
-        // DB::table('basis_pengetahuan')->select('penyakit.nama')
-        // ->join('gejala', 'basis_pengetahuan.gejala_id', '=', 'gejala.id')
-        // ->join('penyakit', 'basis_pengetahuan.penyakit_id', '=', 'penyakit.id')
-        // ->whereIn('basis_pengetahuan.gejala_id', )
         $arbobot = [0, 1, 0.75, 0.5, 0.25];
         $argejala = [];
 
@@ -35,6 +30,7 @@ class DiagnosaController extends PenggunaController
             $arkondisi = explode("_", $request->kondisi[$i]);
             $kondisi[] = ['gejala_id' => $arkondisi[0]];
             $kepastian[$arkondisi[0]] = $arkondisi[1];
+            // dd($);
             if (strlen($request->kondisi[$i]) > 1) {
                 $argejala += [$arkondisi[0] => $arkondisi[1]];
                 $penyakits = Penyakit::with(['basis_pengetahuans' => function ($result) use ($kepastian) {
@@ -42,81 +38,80 @@ class DiagnosaController extends PenggunaController
                 }])->groupBy('id')->orderBy('id')->get();
             }
         }
-        // dd(count($kepastian));
-        $dbg = [];
-        foreach ($penyakits as $penyakit) {
-            foreach ($penyakit->basis_pengetahuans as $bp) {
-                for ($i = 1; $i <= count($kepastian); $i++) {
-                    if ($bp->gejala_id == array_keys($kepastian)) {
-                        $cfkombine[$i] = $bp->cf;
+        // $dbg = [];
+        foreach($penyakits as $penyakit) {
+            foreach($penyakit->basis_pengetahuans as $bp) {
+                $mbPenyakits[$penyakit->id][] = $bp->mb * $arbobot[$kepastian[$bp->gejala_id]];
+                $mdPenyakits[$penyakit->id][] = $bp->md * $arbobot[$kepastian[$bp->gejala_id]];
+            }
+            // MB
+            foreach($mbPenyakits as $i => $mbPenyakit){
+                $mbHasil = 0;
+                $mbJumlah = count($mbPenyakit);
+                foreach($mbPenyakit as $key => $mb){
+                    if(++$key == $mbJumlah){
+                        $mbLama = $mbHasil;
+                        $mbHasil = $mbLama + $mb * (1 - $mbLama);
+                        $mbTotal = $mbHasil;
+                    }elseif($key >= 1){
+                        $mbLama = $mbHasil;
+                        $mbHasil = $mbLama + $mb * (1 - $mbLama);
+                    }else{
+                        $mbHasil = $mb[0];
                     }
                 }
+                $mbTotalPerPenyakit[$i] = $mbTotal;
 
-                // $cfCombine = $bp->cf * $kepastian
+            }
+            // MD
+            foreach($mdPenyakits as $i => $mdPenyakit){
+                $mdHasil = 0;
+                $mdJumlah = count($mdPenyakit);
+                foreach($mdPenyakit as $key => $md){
+                    if(++$key == $mdJumlah){
+                        $mdLama = $mdHasil;
+                        $mdHasil = $mdLama + $md * (1 - $mdLama);
+                        $mdTotal = $mdHasil;
+                    }elseif($key >= 1){
+                        $mdLama = $mdHasil;
+                        $mdHasil = $mdLama + $md * (1 - $mdLama);
+                    }else{
+                        $mdHasil = $md[0];
+                    }
+                }
+                $mdTotalPerPenyakit[$i] = $mdTotal;
             }
         }
-        dd($cfkombine);
-        // $penyakits->map(function ($item, $key) use ($arbobot, $kepastian) {
 
-        // });
+        // Combine mb dan md
+        $combineResult = array_merge_recursive($mbTotalPerPenyakit,$mdTotalPerPenyakit);
+        // Menghitung cf
+        foreach($combineResult as $index => $result){
+            $cf[$index] = round(($result[0] - $result[1]) * 100); 
+        }
 
-        // return $penyakits;
-        // dd($penyakits);
-
-        // return $penyakits;
-        // return $penyakits;
-        // dd($argejala);
-
-        //Perhitungan CF
-
-        // $penyakits = Penyakit::get();
-        // $arpenyakit = [];
-        // foreach ($penyakits as $penyakit) {
-        //     $cftotal_temp = 0;
-        //     $cf = 0;
-        //     $cflama = 0;
-        //     $bps = BasisPengetahuan::where('id_penyakit', '=', $penyakit->id);
-        //     foreach ($bps as $bp) {
-        //         $arkondisi = explode("_", $request->kondisi[0]);
-        //         $gejala = $arkondisi[0];
-        //         for ($i = 0; $i < count($request->kondisi); $i++) {
-        //             $arkondisi = explode("_", $request->kondisi[$i]);
-        //             $gejala = $arkondisi[0];
-        //             if ($bp->gejala_id == $gejala) {
-        //                 $cf = $bp->cf * $arbobot[$arkondisi[1]];
-        //                 if (($cf >= 0) && ($cf * $cflama >= 0)) {
-        //                     $cflama = $cflama + ($cf * (1 - $cflama));
-        //                 }
-        //                 if ($cf * $cflama < 0) {
-        //                     $cflama = ($cflama + $cf) / (1 - Math . Min(Math . abs($cflama), Math . abs($cf)));
-        //                 }
-        //                 if (($cf < 0) && ($cf * $cflama >= 0)) {
-        //                     $cflama = $cflama + ($cf * (1 + $cflama));
-        //                 }
-        //             }
-        //         }
-        //     }
-        //     if ($cflama > 0) {
-        //         $arpenyakit += array($penyakit->id => number_format($cflama, 4));
-        //     }
-        // }
-        // arsort($arpenyakit);
-
-        // $inpgejala = serialize($argejala);
-        // $inppenyakit = serialize($arpenyakit);
-
-        // $np1 = 0;
-        // foreach ($arpenyakit as $key1 => $value1) {
-        //     $np1++;
-        //     $idpkt1[$np1] = $key1;
-        //     $vlpkt1[$np1] = $value1;
-        // }
-
-        // echo "$inptanggal".'$inpgejala',
-        //         '$inppenyakit',
-        //         '$idpkt1[1]',
-        //         '$vlpkt1[1]'"
-        // // return $argejala;
+        // Mengurutkan hasil dari presentase terbesar
+        arsort($cf);
+        foreach($cf as $index => $result){
+            $hasilAnalisa[$index] = $result;
+        }
+        // dd(session('biodata'));
+        // dd($hasilAnalisa[array_key_first($hasilAnalisa)]);
+        Diagnosa::create([
+            'nik' => session('biodata')['nik'],
+            'nama_pemilik' => session('biodata')['nama_pemilik'],
+            'no_hp' => session('biodata')['no_hp'],
+            'alamat' => session('biodata')['alamat'],
+            'nama_peliharaan' => session('biodata')['nama_peliharaan'],
+            'jekel' => session('biodata')['jekel'],
+            'umur' => session('biodata')['umur'] > 0 ?? null,
+            'berat' => session('biodata')['berat'] > 0 ?? null,
+            'suhu' => session('biodata')['suhu'] > 0 ?? null,
+            'penyakit_id' => array_key_first($hasilAnalisa),
+            'presentase' => $hasilAnalisa[array_key_first($hasilAnalisa)]
+        ]);
+        return 'OK';
+        // return view('pengguna.diagnosa.result', compact($hasilAnalisa, $penyakits, $kepastian));
     }
 
     public function reset(Request $request)

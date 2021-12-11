@@ -92,6 +92,7 @@
                                                     <option value="{{ $gejala->id }}_1">Pasti</option>
                                                     <option value="{{ $gejala->id }}_2">Hampir pasti</option>
                                                     <option value="{{ $gejala->id }}_3">Mungkin</option>
+                                                    <option value="{{ $gejala->id }}_4">Ragu-ragu</option>
                                                     <option value="{{ $gejala->id }}_0">Tidak</option>
                                                 </select>
                                             </div>

@@ -52,31 +52,31 @@
                                 </div>
                             @enderror
                         </div>
-                        {{-- <div class="row">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="mb">MB</label>
-                                <input type="number" step="0.1" value="{{$bp->mb}}" min="0" max="1" class="form-control @error('mb') is-invalid @enderror" id="mb" name="mb">
-                                @error('mb')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="mb">MB</label>
+                                    <input type="number" step="0.1" value="{{$bp->mb}}" min="0" max="1" class="form-control @error('mb') is-invalid @enderror" id="mb" name="mb">
+                                    @error('mb')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
-                                @enderror
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="md">MD</label>
+                                    <input type="number" step="0.01" value="{{$bp->md}}" min="0" max="1" class="form-control @error('md') is-invalid @enderror" id="md" name="md">
+                                    @error('md')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="md">MD</label>
-                                <input type="number" step="0.1" value="{{$bp->md}}" min="0" max="1" class="form-control @error('md') is-invalid @enderror" id="md" name="md">
-                                @error('md')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                        </div>
-                    </div> --}}
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="cf">Faktor Kepastian (CF)</label>
                             <input type="number" step="0.01" min="0" max="1"
                                 class="form-control @error('cf') is-invalid @enderror" id="cf" name="cf"
@@ -86,8 +86,7 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                        </div>
-
+                        </div> --}}
                     </div>
                     <div class="card-footer text-right">
                         <a href="{{ route('admin.bp.index') }}" class="btn btn-danger"><i class="fas fa-arrow-left"></i>

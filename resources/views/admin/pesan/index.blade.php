@@ -27,7 +27,7 @@
                                     <tr>
                                         <th width="10%">No</th>
                                         <th>Nama Pengirim</th>
-                                        <th>Email</th>
+                                        <th>Subjek Pesan</th>
                                         <th width="20%">Tanggal</th>
                                         <th width="19%">Aksi</th>
                                     </tr>
@@ -37,7 +37,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $pesan->nama }}</td>
-                                            <td>{{ $pesan->email }}</td>
+                                            <td>{{ $pesan->subjek }}</td>
                                             <td>{{ Carbon\carbon::parse($pesan->created_at)->isoFormat('D MMMM Y') }}</td>
                                             <td>
                                                 <a class="btn btn-icon btn-primary btn-sm"

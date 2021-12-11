@@ -57,7 +57,7 @@
                                 </div>
                             @enderror
                         </div>
-                        {{-- <div class="row">
+                        <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="mb">MB</label>
@@ -73,7 +73,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="md">MD</label>
-                                    <input type="number" step="0.1" value="0.0" min="0" max="1"
+                                    <input type="number" step="0.01" value="0.00" min="0" max="1"
                                         class="form-control @error('md') is-invalid @enderror" id="md" name="md">
                                     @error('md')
                                         <div class="invalid-feedback">
@@ -83,8 +83,8 @@
                                 </div>
                             </div>
 
-                        </div> --}}
-                        <div class="form-group">
+                        </div>
+                        {{-- <div class="form-group">
                             <label for="cf">Faktor Kepastian (CF)</label>
                             <input type="number" step="0.01" value="0.00" min="0" max="1"
                                 class="form-control @error('cf') is-invalid @enderror" id="cf" name="cf">
@@ -93,7 +93,7 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                        </div>
+                        </div> --}}
 
                     </div>
                     <div class="card-footer text-right">
