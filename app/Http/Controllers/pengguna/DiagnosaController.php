@@ -30,7 +30,6 @@ class DiagnosaController extends PenggunaController
             $arkondisi = explode("_", $request->kondisi[$i]);
             $kondisi[] = ['gejala_id' => $arkondisi[0]];
             $kepastian[$arkondisi[0]] = $arkondisi[1];
-            // dd($);
             if (strlen($request->kondisi[$i]) > 1) {
                 $argejala += [$arkondisi[0] => $arkondisi[1]];
                 $penyakits = Penyakit::with(['basis_pengetahuans' => function ($result) use ($kepastian) {
@@ -95,8 +94,7 @@ class DiagnosaController extends PenggunaController
         foreach($cf as $index => $result){
             $hasilAnalisa[$index] = $result;
         }
-        // dd(session('biodata'));
-        // dd($hasilAnalisa[array_key_first($hasilAnalisa)]);
+
         Diagnosa::create([
             'nik' => session('biodata')['nik'],
             'nama_pemilik' => session('biodata')['nama_pemilik'],
@@ -110,8 +108,9 @@ class DiagnosaController extends PenggunaController
             'penyakit_id' => array_key_first($hasilAnalisa),
             'presentase' => $hasilAnalisa[array_key_first($hasilAnalisa)]
         ]);
-        return 'OK';
-        // return view('pengguna.diagnosa.result', compact($hasilAnalisa, $penyakits, $kepastian));
+        $title = $this->title;
+        $bcrum = $this->bcrum('Hasil', route('pengguna.diagnosa.index'), $title);
+        return view('pengguna.diagnosa.show', compact('hasilAnalisa', 'penyakits', 'kepastian', 'title', 'bcrum'));
     }
 
     public function reset(Request $request)

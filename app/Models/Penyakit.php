@@ -18,4 +18,9 @@ class Penyakit extends Model
     {
         return $this->hasMany(BasisPengetahuan::class);
     }
+
+    public function Diagnosas()
+    {
+        return $this->hasMany(Diagnosa::class);        
+    }
 }
