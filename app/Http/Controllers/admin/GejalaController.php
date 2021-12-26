@@ -14,7 +14,7 @@ class GejalaController extends AdminController
     public function index()
     {
         $title = $this->title;
-        $gejalas = Gejala::latest()->get();
+        $gejalas = Gejala::orderByDesc('id')->get();
         return view('admin.gejala.index', compact('title', 'gejalas'));
     }
 

@@ -18,7 +18,7 @@
                 </li>
                 @auth
                     <li><a href="{{ route('admin.dashboard') }}" class="appointment-btn scrollto text-white text-center"
-                            style="width: 100px">Admin</a></li>
+                            style="width: 100px">Karyawan</a></li>
                 @else
                     <li><a href="{{ route('login') }}" class="appointment-btn scrollto text-white text-center"
                             style="width: 100px">Login</a>

@@ -13,8 +13,9 @@
         {{-- Body --}}
         <div class="section-body">
             <div class="card card-primary">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <h4>Daftar {{ $title }}</h4>
+                    <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#cetakFilter">Cetak</button>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -39,7 +40,7 @@
                                             <td>{{ Str::title($diagnosa->nama_pemilik) }}</td>
                                             <td>{{ Str::title($diagnosa->nama_peliharaan) }}</td>
                                             <td>{{ Str::title($diagnosa->penyakit->nama) }}</td>
-                                            <td>{{ $diagnosa->presentase }}%</td>
+                                            <td>{{ $diagnosa->presentase * 100 }}%</td>
                                             <td>
                                                 <a class="btn btn-icon btn-primary btn-sm"
                                                     href="{{ route('admin.diagnosa.show', $diagnosa->id) }}">
@@ -57,6 +58,41 @@
             </div>
         </div>
     </section>
+
+                        <div class="modal fade" id="cetakFilter" tabindex="-1" aria-labelledby="cetakModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="{{route('admin.laporan.print')}}" method="post">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="cetakModalLabel">Filter Tanggal</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="periode_awal">Periode Awal</label>
+                                                    <input type="date" class="form-control" name="periode_awal" id="periode_awal"><li class="fas fa-calender"></li>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="periode_akhir">Periode Akhir</label>
+                                                    <input type="date" class="form-control" name="periode_awal" id="periode_awal">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-success">Korfirmasi</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 @endsection
 
 @push('css')

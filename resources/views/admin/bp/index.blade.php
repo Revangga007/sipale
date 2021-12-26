@@ -23,14 +23,13 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="table-responsive">
-                            <table class="table table-striped" id="tabel">
+                            <table class="table table-striped table-bordered" id="tabel">
                                 <thead>
                                     <tr>
-                                        <th width="10%">No</th>
+                                        <th width="8%">No</th>
                                         <th>Nama Gejala</th>
                                         <th>Nama Penyakit</th>
-                                        <th width="10%">MB</th>
-                                        <th width="10%">MD</th>
+                                        <th width="10%">CF</th>
                                         <th width="17%">Aksi</th>
                                     </tr>
                                 </thead>
@@ -40,8 +39,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ Str::title($bp->gejala->nama) }}</td>
                                             <td>{{ Str::title($bp->penyakit->nama) }}</td>
-                                            <td>{{ $bp->mb }}</td>
-                                            <td>{{ $bp->md }}</td>
+                                            <td>{{ $bp->cf }}</td>
                                             <td>
                                                 <a class="btn btn-icon btn-warning btn-sm"
                                                     href="{{ route('admin.bp.edit', $bp->id) }}"><i
@@ -90,6 +88,7 @@
         // Datatables
         $(document).ready(() => {
             $('#tabel').DataTable();
+        });
 
             $('.btn-hapus').click(function() {
                 let id = $(this).val();
@@ -130,7 +129,7 @@
                 })
 
             }
-        });
+
     </script>
 
 @endpush

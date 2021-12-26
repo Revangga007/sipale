@@ -22,26 +22,6 @@
                                     <input type="text" class="form-control" id="nama_pemilik" name="nama_pemilik"
                                         placeholder="Masukkan Nama Pemilik">
                                 </div>
-                                {{-- <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="tempat_lahir">Tempat Lahir</label>
-                                    <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir"
-                                        placeholder="Masukkan Tempat Lahir">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="tanggal_lahir">Tanggal Lahir</label>
-                                    <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir">
-                                    <input type="text" class="form-control" id="tanggal_lahir" name="tanggal_lahir"
-                                        value="{{ \Carbon\Carbon::now()->isoFormat('DD/MM/YYYY') }}">
-                                    <div class="input-group-addon">
-                                        <span class="glyphicon glyphicon-th"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
                                 <div class="form-group">
                                     <label for="no_hp">No. Handphone</label>
                                     <input type="text" class="form-control" id="no_hp" name="no_hp"
@@ -100,7 +80,7 @@
                                 <div class="form-group">
                                     <label for="suhu">Suhu Badan</label>
                                     <input type="number" class="form-control" id="suhu" name="suhu"
-                                        placeholder="Masukkan Suhu Badan Peliharaan" value="0">
+                                        placeholder="Masukkan Suhu Badan Peliharaan" step='0.01' value='0.00'>
                                     <small>*Jika tidak diketahui masukkan angka 0</small>
                                 </div>
                             </div>

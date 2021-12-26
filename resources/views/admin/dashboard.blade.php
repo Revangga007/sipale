@@ -48,10 +48,10 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Pasien</h4>
+                                <h4>Diagnosa</h4>
                             </div>
                             <div class="card-body">
-                                1,201
+                                {{$diagnosas}}
                             </div>
                         </div>
                     </div>
@@ -79,3 +79,10 @@
         </div>
     </section>
 @endsection
+@push('css')
+    <link rel="stylesheet" href="{{ asset('assets/vendor/sweetalert2/dist/sweetalert2.min.css') }}">
+@endpush
+
+@push('js')
+    <script src="{{ asset('assets/vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+@endpush

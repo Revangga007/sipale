@@ -25,8 +25,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'admin', 'as' => 'admin.', 'mi
     Route::resource('diagnosa', DiagnosaController::class)->except(['create', 'store', 'edit', 'update']);
     Route::resource('akun', AkunController::class);
     Route::resource('pesan', PesanController::class)->except(['create', 'store', 'edit', 'update']);
-    Route::get('password/edit/{id}', [UbahPasswordController::class, 'edit'])->name('pw.edit');
-    Route::post('password/edit/{id}', [UbahPasswordController::class, 'update'])->name('pw.update');
+    Route::get('password/edit', [UbahPasswordController::class, 'edit'])->name('pw.edit');
+    Route::post('password/edit', [UbahPasswordController::class, 'update'])->name('pw.update');
+    Route::post('laporan/print', [LaporanController::class, 'print'])->name('laporan.print');
 });
 
 use App\Http\Controllers\pengguna\BiodataController;

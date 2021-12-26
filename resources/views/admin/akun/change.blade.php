@@ -14,7 +14,7 @@
                 <div class="card-header">
                     <h4>Ubah {{ $title }}</h4>
                 </div>
-                <form action="{{ route('admin.pw.update', Auth::user()->id) }}" method="post">
+                <form action="{{ route('admin.pw.update') }}" method="post">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
@@ -58,3 +58,11 @@
         </div>
     </section>
 @endsection
+
+@push('css')
+    <link rel="stylesheet" href="{{ asset('assets/vendor/sweetalert2/dist/sweetalert2.min.css') }}">
+@endpush
+
+@push('js')
+    <script src="{{ asset('assets/vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+@endpush

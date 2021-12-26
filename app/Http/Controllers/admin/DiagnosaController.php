@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class DiagnosaController extends Controller
 {
-    public $title = 'Pasien';
+    public $title = 'Diagnosa';
 
     public function index()
     {

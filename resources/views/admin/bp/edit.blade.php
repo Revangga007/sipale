@@ -25,7 +25,7 @@
                                 name="gejala_id">
                                 <option disabled>-- Pilih Gejala --</option>
                                 @foreach ($gejalas as $gejala)
-                                    <option value="{{ $gejala->id }}" {{ $gejala->id ?? 'selected' }}>
+                                    <option value="{{ $gejala->id }}" {{ $bp->gejala_id == $gejala->id ? 'selected' : null }}>
                                         {{ $gejala->nama }}
                                     </option>
                                 @endforeach
@@ -42,7 +42,7 @@
                                 name="penyakit_id">
                                 <option disabled>-- Pilih Penyakit --</option>
                                 @foreach ($penyakits as $penyakit)
-                                    <option value="{{ $penyakit->id }}" {{ $penyakit->id ?? 'selected' }}>
+                                    <option value="{{ $penyakit->id }}" {{ $bp->penyakit_id == $penyakit->id ?? null }}>
                                         {{ $penyakit->nama }}</option>
                                 @endforeach
                             </select>
@@ -52,41 +52,22 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="mb">MB</label>
-                                    <input type="number" step="0.1" value="{{$bp->mb}}" min="0" max="1" class="form-control @error('mb') is-invalid @enderror" id="mb" name="mb">
-                                    @error('mb')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="md">MD</label>
-                                    <input type="number" step="0.01" value="{{$bp->md}}" min="0" max="1" class="form-control @error('md') is-invalid @enderror" id="md" name="md">
-                                    @error('md')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                             <label for="cf">Faktor Kepastian (CF)</label>
-                            <input type="number" step="0.01" min="0" max="1"
-                                class="form-control @error('cf') is-invalid @enderror" id="cf" name="cf"
-                                value="{{ $bp->cf }}">
+                            <select name="cf" id="cf" class="form-control">
+                                <option value="" selected disabled>-- Pilih --</option>
+                                <option value="1" {{$bp->cf == 1 ? 'selected' : null}}>Sangat berpengaruh</option>
+                                <option value="0.8" {{$bp->cf == 0.8 ? 'selected' : null}}>Berpengaruh</option>
+                                <option value="0.6" {{$bp->cf == 0.6 ? 'selected' : null}}>Cukup berpengaruh</option>
+                                <option value="0.4" {{$bp->cf == 0.4 ? 'selected' : null}}>Kurang berpengaruh</option>
+                                <option value="0.2" {{$bp->cf == 0.2 ? 'selected' : null}}>Tidak tahu</option>
+                            </select>
                             @error('cf')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
-                        </div> --}}
+                        </div>
                     </div>
                     <div class="card-footer text-right">
                         <a href="{{ route('admin.bp.index') }}" class="btn btn-danger"><i class="fas fa-arrow-left"></i>

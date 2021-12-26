@@ -13,8 +13,8 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-title">Pengaturan</div>
-                <a href="{{ route('admin.pw.edit', Auth::user()->id) }}" class="dropdown-item has-icon">
-                    <i class="fas fa-bolt"></i> Ubah Password
+                <a href="{{ route('admin.pw.edit') }}" class="dropdown-item has-icon">
+                    <i class="fas fa-log"></i> Ubah Password
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger"

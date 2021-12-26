@@ -15,9 +15,9 @@ class CreatePesanTable extends Migration
     {
         Schema::create('pesan', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('email');
-            $table->string('subjek');
+            $table->string('nama', 100);
+            $table->string('email', 100);
+            $table->string('subjek', 100);
             $table->longText('pesan');
             $table->timestamps();
         });

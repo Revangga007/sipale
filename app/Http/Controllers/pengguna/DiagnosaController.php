@@ -37,64 +37,30 @@ class DiagnosaController extends PenggunaController
                 }])->groupBy('id')->orderBy('id')->get();
             }
         }
-        // $dbg = [];
+        // dd(array_keys($kepastian));
         foreach($penyakits as $penyakit) {
             foreach($penyakit->basis_pengetahuans as $bp) {
-                $mbPenyakits[$penyakit->id][] = $bp->mb * $arbobot[$kepastian[$bp->gejala_id]];
-                $mdPenyakits[$penyakit->id][] = $bp->md * $arbobot[$kepastian[$bp->gejala_id]];
+                $arrCfKombine[$penyakit->id][] = $bp->cf * $arbobot[$kepastian[$bp->gejala_id]];
             }
-            // MB
-            foreach($mbPenyakits as $i => $mbPenyakit){
-                $mbHasil = 0;
-                $mbJumlah = count($mbPenyakit);
-                foreach($mbPenyakit as $key => $mb){
-                    if(++$key == $mbJumlah){
-                        $mbLama = $mbHasil;
-                        $mbHasil = $mbLama + $mb * (1 - $mbLama);
-                        $mbTotal = $mbHasil;
-                    }elseif($key >= 1){
-                        $mbLama = $mbHasil;
-                        $mbHasil = $mbLama + $mb * (1 - $mbLama);
+            foreach($arrCfKombine as $key => $cfKombine){
+                $cfBaru = 0;
+                $jumlahCf = count($cfKombine);
+                foreach($cfKombine as $key2 => $cf){
+                    if(++$key2 == $jumlahCf){
+                        $cfLama = $cfBaru;
+                        $cfBaru = $cfLama + $cf * (1 - $cfLama);
+                        $cfTotal = $cfBaru;
+                    }elseif($key2 >= 1){
+                        $cfLama = $cfBaru;
+                        $cfBaru = $cfLama + $cf * (1 - $cfLama);
                     }else{
-                        $mbHasil = $mb[0];
+                        $cfBaru = $cf[0];
                     }
                 }
-                $mbTotalPerPenyakit[$i] = $mbTotal;
-
-            }
-            // MD
-            foreach($mdPenyakits as $i => $mdPenyakit){
-                $mdHasil = 0;
-                $mdJumlah = count($mdPenyakit);
-                foreach($mdPenyakit as $key => $md){
-                    if(++$key == $mdJumlah){
-                        $mdLama = $mdHasil;
-                        $mdHasil = $mdLama + $md * (1 - $mdLama);
-                        $mdTotal = $mdHasil;
-                    }elseif($key >= 1){
-                        $mdLama = $mdHasil;
-                        $mdHasil = $mdLama + $md * (1 - $mdLama);
-                    }else{
-                        $mdHasil = $md[0];
-                    }
-                }
-                $mdTotalPerPenyakit[$i] = $mdTotal;
+                $cfHasil[$key] = $cfTotal;
             }
         }
-
-        // Combine mb dan md
-        $combineResult = array_merge_recursive($mbTotalPerPenyakit,$mdTotalPerPenyakit);
-        // Menghitung cf
-        foreach($combineResult as $index => $result){
-            $cf[$index] = round(($result[0] - $result[1]) * 100); 
-        }
-
-        // Mengurutkan hasil dari presentase terbesar
-        arsort($cf);
-        foreach($cf as $index => $result){
-            $hasilAnalisa[$index] = $result;
-        }
-
+        arsort(($cfHasil));
         Diagnosa::create([
             'nik' => session('biodata')['nik'],
             'nama_pemilik' => session('biodata')['nama_pemilik'],
@@ -102,15 +68,17 @@ class DiagnosaController extends PenggunaController
             'alamat' => session('biodata')['alamat'],
             'nama_peliharaan' => session('biodata')['nama_peliharaan'],
             'jekel' => session('biodata')['jekel'],
-            'umur' => session('biodata')['umur'] > 0 ?? null,
-            'berat' => session('biodata')['berat'] > 0 ?? null,
-            'suhu' => session('biodata')['suhu'] > 0 ?? null,
-            'penyakit_id' => array_key_first($hasilAnalisa),
-            'presentase' => $hasilAnalisa[array_key_first($hasilAnalisa)]
+            'umur' => (session('biodata')['umur']) > 0 ? (session('biodata')['umur']) : null,
+            'berat' => (session('biodata')['berat']) > 0 ? (session('biodata')['berat']) : null,
+            'suhu' => (session('biodata')['suhu']) > 0 ? (session('biodata')['suhu']) : null,
+            'penyakit_id' => array_key_first($cfHasil),
+            'presentase' => $cfHasil[array_key_first($cfHasil)]
         ]);
         $title = $this->title;
         $bcrum = $this->bcrum('Hasil', route('pengguna.diagnosa.index'), $title);
-        return view('pengguna.diagnosa.show', compact('hasilAnalisa', 'penyakits', 'kepastian', 'title', 'bcrum'));
+        $gejalas = Gejala::all();
+        // $detailPenyakit = $this->
+        return view('pengguna.diagnosa.analisa', compact('cfHasil', 'penyakits', 'kepastian', 'gejalas', 'title', 'bcrum'));
     }
 
     public function reset(Request $request)
