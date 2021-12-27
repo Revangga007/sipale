@@ -44,16 +44,15 @@ class LoginController extends Controller
     protected function sendFailedLoginResponse(Request $request)
     {
         throw ValidationException::withMessages([
-            'username' => [trans('auth.failed')],
+            // 'username' => [trans('auth.failed')],
+            'gagal' => 'username / password salah'
         ]);
     }
 
     public function username()
     {
         $login = request()->input('username');
-        if (is_numeric($login)) {
-            $field = 'phone';
-        } elseif (filter_var($login, FILTER_VALIDATE_EMAIL)) {
+        if (filter_var($login, FILTER_VALIDATE_EMAIL)) {
             $field = 'email';
         } else {
             $field = 'username';
