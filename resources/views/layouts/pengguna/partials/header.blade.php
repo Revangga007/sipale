@@ -12,9 +12,8 @@
                     <a href="{{ route('pengguna.diagnosa.index') }}">Diagnosa</a>
                 </li>
                 <li><a href="{{ route('pengguna.penyakit.index') }}">Info penyakit</a></li>
-                <li><a href="{{ route('pengguna.dashboard') }}#tentang">Tentang</a></li>
                 <li class="{{ $title == 'Kontak' ? 'active' : null }}">
-                    <a href="{{ route('pengguna.pesan.index') }}">Kontak</a>
+                    <a href="{{ route('pengguna.pesan.index') }}">Pesan</a>
                 </li>
                 @auth
                     <li><a href="{{ route('admin.dashboard') }}" class="appointment-btn scrollto text-white text-center"

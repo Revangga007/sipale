@@ -54,9 +54,12 @@
     @if ($title == 'Dashboard')
         <main id="main">
     @endif
+
+    @if ($title != 'Dashboard')
     <section class="inner-page">
         @yield('content')
     </section>
+    @endif
 
     </main><!-- End #main -->
 

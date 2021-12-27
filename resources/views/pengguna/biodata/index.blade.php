@@ -15,7 +15,7 @@
                                     <label for="nik">No. KTP</label>
                                     <input type="text" class="form-control" id="nik" name="nik"
                                         placeholder="Masukkan No.KTP / NIK Lengkap">
-                                    <div id="hasil"></div>
+                                    {{-- <div id="hasil"></div> --}}
                                 </div>
                                 <div class="form-group">
                                     <label for="nama_pemilik">Nama Pemilik</label>
@@ -89,7 +89,7 @@
                 </div>
                 <div class="text-center">
                     <a href="{{ route('pengguna.dashboard') }}" class="btn btn-danger btn-md">Kembali</a>
-                    <button type="submit" class="btn btn-primary btn-md" id="kirim" disabled>Kirim</button>
+                    <button type="submit" class="btn btn-primary btn-md" id="kirim">Kirim</button>
                 </div>
             </form>
         </div>
@@ -111,77 +111,5 @@
 
 @push('script')
     <script>
-        // $(function() {
-        //     $("#tanggal_lahir").datepicker({
-        //         autoclose: true,
-        //         todayHighlight: true,
-        //         format: 'dd/mm/yyyy',
-        //         language: 'id'
-        //     });
-        // });
-
-        $(document).ready(() => {
-            $('#nik').change(() => {
-                let nik = $('#nik').val();
-                console.log(nik);
-                nikParse(nik, function(hasil) {
-                    console.log(hasil); // object
-                    // console.log(hasil.data.kotakab); // object
-                    if (hasil.status == 'success') {
-                        if (hasil.data.kotakab == "KAB. BATANG") {
-                            if ($('#nik').hasClass('is-invalid') && $('#hasil').hasClass(
-                                    'invalid-feedback')) {
-                                $('#nik').removeClass('is-invalid');
-                                $('#nik').addClass('is-valid');
-                                $('#hasil').removeClass('invalid-feedback')
-                                $('#hasil').addClass('valid-feedback');
-                            } else {
-                                $('#nik').addClass('is-valid');
-                                $('#hasil').addClass('valid-feedback');
-                            }
-                            $('#hasil').text(hasil.pesan);
-                            enBtn();
-                            // $('#tempat_lahir').val(hasil.data.kotakab);
-                            // $('#tanggal_lahir').val(hasil.data.lahir);
-                        } else {
-                            if ($('#nik').hasClass('is-valid') && $('#hasil').hasClass(
-                                    'valid-feedback')) {
-                                $('#nik').removeClass('is-valid');
-                                $('#nik').addClass('is-invalid');
-                                $('#hasil').removeClass('valid-feedback');
-                                $('#hasil').addClass('invalid-feedback');
-                            } else {
-                                $('#nik').addClass('is-invalid');
-                                $('#hasil').addClass('invalid-feedback');
-                            }
-                            $('#hasil').text(
-                                "Maaf, sistem hanya berlaku untuk masyarakat Batang");
-                            disBtn();
-                        }
-                    } else {
-                        if ($('#nik').hasClass('is-valid') && $('#hasil').hasClass(
-                                'valid-feedback')) {
-                            $('#nik').removeClass('is-valid');
-                            $('#nik').addClass('is-invalid');
-                            $('#hasil').removeClass('valid-feedback');
-                            $('#hasil').addClass('invalid-feedback');
-                        } else {
-                            $('#nik').addClass('is-invalid');
-                            $('#hasil').addClass('invalid-feedback');
-                        }
-                        $('#hasil').text(hasil.pesan);
-                        disBtn();
-                    }
-                });
-            });
-        });
-
-        function enBtn() {
-            document.getElementById('kirim').disabled = false;
-        }
-
-        function disBtn() {
-            document.getElementById('kirim').disabled = true;
-        }
     </script>
 @endpush

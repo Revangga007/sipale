@@ -1,19 +1,7 @@
 @extends('layouts.pengguna.main')
 
 @section('content')
-    {{-- <div class="container">
-    <div class="card">
-        <div class="card-header">
-hi
-        </div>
-        <div class="card-body">
-            hello
-            i
-            ip
-        </div>
-    </div>
-</div> --}}
-    <section id="tentang" class="about">
+    {{-- <section id="tentang" class="about">
         <div class="container-fluid">
             <div class="section-title">
                 <h2>Tentang</h2>
@@ -57,4 +45,5 @@ hi
             </div>
 
         </div>
+    </section> --}}
     @endsection
