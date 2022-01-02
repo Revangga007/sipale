@@ -37,7 +37,7 @@
                             <div class="alert alert-danger" role="alert">
                                 {{$message}}
                             </div>
-                            @endif
+                            @enderror
                             <div class="card-body">
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf

@@ -1,4 +1,4 @@
-<section class="breadcrumbs">
+<section class="breadcrumbs no-print">
     <div class="container">
         <div class="d-flex justify-content-between align-items-center">
             <h2>{{$title ?? null}}</h2>

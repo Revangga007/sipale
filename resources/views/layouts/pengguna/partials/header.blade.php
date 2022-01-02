@@ -1,5 +1,5 @@
 {{-- Navbar --}}
-<header id="header" class="fixed-top">
+<header id="header" class="fixed-top no-print">
     <div class="container d-flex align-items-center">
 
         <h1 class="logo mr-auto">
@@ -26,6 +26,5 @@
 
             </ul>
         </nav><!-- .nav-menu -->
-
     </div>
 </header>

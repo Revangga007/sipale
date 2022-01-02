@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\admin\UbahPasswordController;
+use App\Http\Controllers\admin\LaporanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'admin', 'as' => 'admin.', 'mi
     Route::resource('pesan', PesanController::class)->except(['create', 'store', 'edit', 'update']);
     Route::get('password/edit', [UbahPasswordController::class, 'edit'])->name('pw.edit');
     Route::post('password/edit', [UbahPasswordController::class, 'update'])->name('pw.update');
-    Route::post('laporan/print', [LaporanController::class, 'print'])->name('laporan.print');
+    Route::post('laporan', [LaporanController::class, 'create'])->name('laporan.create');
 });
 
 use App\Http\Controllers\pengguna\BiodataController;

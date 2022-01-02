@@ -54,7 +54,7 @@
 <div class="modal fade" id="cetakFilter" tabindex="-1" aria-labelledby="cetakModalLabel" aria-hidden="true">
 <div class="modal-dialog">
     <div class="modal-content">
-        <form action="{{route('admin.laporan.print')}}" method="post">
+        <form action="{{route('admin.laporan.create')}}" method="post">
             <div class="modal-header">
                 <h5 class="modal-title" id="cetakModalLabel">Filter Tanggal</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -72,7 +72,7 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="periode_akhir">Periode Akhir</label>
-                            <input type="date" class="form-control" name="periode_awal" id="periode_awal">
+                            <input type="date" class="form-control" name="periode_akhir" id="periode_akhir">
                         </div>
                     </div>
                 </div>

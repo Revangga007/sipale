@@ -1760,3 +1760,17 @@ section {
     color: #fff;
     text-decoration: none;
 }
+
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+
+    .mobile-nav, .mobile-nav *
+    {
+        display: none;
+        visibility: hidden;
+    } 
+}

@@ -3,43 +3,14 @@
 @section('content')
     <section class="inn">
         <div class="container">
-            @foreach ($penyakits as $penyakit)
-                @if ($penyakit->id == array_key_first($cfHasil))
-                    <div class="row bg-light rounded-sm">
-                        <div class="col-md-6 p-3">
-                            <h3 style="font-size: 25px" class="mb-4">Hasil Diagnosa</h3>
-                            <p>Penyakit yang diderita kucing peliharaan anda :</p>
-                                <h4 style="font-size: 22px" class="mb-3 text-success">{{ $penyakit->nama }}</h4>
-                                <p style="font-size: 20px" class="text-success">Presentase : {{$cfHasil[array_key_first($cfHasil)] * 100}}%</p>
-                        </div>
-                        <div class="col-md-6 d-flex justify-content-center p-3">
-                            <img src="{{asset('assets/gambar/' . $penyakit->gambar)}}" alt="{{$penyakit->nama}}" width="400px" class="rounded-lg">
-                        </div>
-                    </div>
-                    <div class="my-4"></div>
-                    <div class="card">
-                        <div class="card-header bg-success text-white">
-                            Deskripsi penyakit
-                        </div>
-                        <div class="card-body">
-                            {!!$penyakit->deskripsi!!}
-                        </div>
-                    </div>
-                    <div class="my-4"></div>
-                    <div class="card">
-                        <div class="card-header bg-dark text-white">
-                            Solusi penyakit
-                        </div>
-                        <div class="card-body">
-                            {!!$penyakit->solusi!!}
-                        </div>
-                    </div>
-                @endif
-            @endforeach
-            <div class="my-4"></div>
+            <div class="no-print">
+                <button type="button" class="btn btn-primary" style="float: right" onclick="window.print()">Cetak Hasil Diagnosa</button>
+            </div>
+            <h2 class="text-center mb-2 fw-bold">Hasil Diagnosa</h2>
+            <hr class="mb-4">
             <div class="pilihan" class="mt-4">
-                <h3 style="font-size: 25px" class="mb-4">Pilihan Pengguna</h3>
-                <table class="table table-boredered">
+                <h3 style="font-size: 25px" class="mb-2">Pilihan Pengguna</h3>
+                <table class="table table-bordered table-hovered">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -58,11 +29,11 @@
                                     <td>
                                         @if($kp == 1)
                                         Pasti
-                                        @elseif($kp == 0.75)
+                                        @elseif($kp == 2)
                                         Hampir pasti
-                                        @elseif($kp == 0.5)
+                                        @elseif($kp == 3)
                                         Mungkin
-                                        @elseif($kp == 0.25)
+                                        @elseif($kp == 4)
                                         Ragu-ragu
                                         @else
                                         Tidak
@@ -76,24 +47,79 @@
                 </table>
             </div>
             <div class="my-4"></div>
+            @foreach ($penyakits as $penyakit)
+                @if ($penyakit->id == array_key_first($cfHasil))
+                    <div class="row bg-light rounded-sm mt-4">
+                        <div class="col-md-6 p-3">
+                            <h3 style="font-size: 25px" class="mb-4">Hasil Diagnosa</h3>
+                            <p>Berdasarkan daftar gejala yang dipilih, Penyakit yang diderita kucing peliharaan anda :</p>
+                                <h4 style="font-size: 22px" class="mb-3 text-success">{{ $penyakit->nama }}</h4>
+                                <p style="font-size: 20px" class="text-success">Presentase : {{$cfHasil[array_key_first($cfHasil)] * 100}}%</p>
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-center p-3">
+                            <img src="{{asset('assets/gambar/' . $penyakit->gambar)}}" alt="{{$penyakit->nama}}" width="400px" class="rounded-lg">
+                        </div>
+                    </div>
+                    <div class="my-4"></div>
+                    <div class="card no-print">
+                        <div class="card-header bg-success text-white">
+                            Deskripsi penyakit
+                        </div>
+                        <div class="card-body">
+                            {!!$penyakit->deskripsi!!}
+                        </div>
+                    </div>
+                    <div class="my-4"></div>
+                    <div class="card no-print">
+                        <div class="card-header bg-dark text-white">
+                            Solusi penyakit
+                        </div>
+                        <div class="card-body">
+                            {!!$penyakit->solusi!!}
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+            <div class="my-4"></div>
             <div id="kemungkinan" class="mt-4">
                 <div class="card">
                     <div class="card-header bg-warning">
                         Kemungkinan penyakit lain
                     </div>
                     <div class="card-body">
-                        <ul id="penyakitLain">
-                            @foreach ($penyakits as $penyakit)
+                        <table class="table table-bordered table-hovered">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Kemungkinan Penyakit Lain</th>
+                                    <th>Presentase</th>
+                                </tr>
+                            </thead>
+                            <tbody id="plain">
+                                @php
+                                    $i = 0;
+                                @endphp
                                 @foreach ($cfHasil as $key => $cf)
-                                    @if($penyakit->id == $key)
-                                        <li>{{$penyakit->nama}}</li>
-                                    @endif
+                                    @foreach ($penyakits as $penyakit)
+                                        @if ($key == $penyakit->id)
+                                        <tr>
+                                            <td>{{$i++}}</td>
+                                            <td>{{$penyakit->nama}}</td>
+                                            <td>{{$cf * 100}}%</td>
+                                        </tr>
+                                        @endif
+                                    @endforeach
                                 @endforeach
-                            @endforeach
-                        </ul>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 @endSection
+@push('script')
+    <script>
+        $('#plain tr:first').hide();
+    </script>
+@endpush

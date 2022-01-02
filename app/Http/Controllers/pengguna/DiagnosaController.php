@@ -77,7 +77,6 @@ class DiagnosaController extends PenggunaController
         $title = $this->title;
         $bcrum = $this->bcrum('Hasil', route('pengguna.diagnosa.index'), $title);
         $gejalas = Gejala::all();
-        // $detailPenyakit = $this->
         return view('pengguna.diagnosa.analisa', compact('cfHasil', 'penyakits', 'kepastian', 'gejalas', 'title', 'bcrum'));
     }
 
