@@ -46,6 +46,7 @@ class AkunController extends AdminController
                 'email' => $request->email,
                 'password' =>  Hash::make($request->password),
             ]);
+            $this->notification('success', 'Berhasil', 'Data Akun Berhasil Ditambah');
             return redirect(route('admin.akun.index'));
         }
     }
@@ -80,10 +81,16 @@ class AkunController extends AdminController
      * @param  \App\Models\Akun  $akun
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $user->update($data);
+        $user = User::find($id);
+        $user->update([
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email
+        ]);
+        $this->notification('success', 'Berhasil', 'Data Akun Berhasil Diubah');
+        return redirect(route('admin.akun.index'));
     }
 
     /**

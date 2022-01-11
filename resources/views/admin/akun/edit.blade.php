@@ -15,6 +15,7 @@
                     <h4>Tambah {{ $title }}</h4>
                 </div>
                 <form action="{{ route('admin.akun.update', $akun->id) }}" method="post">
+                    @method('PUT')
                     @csrf
                     <div class="card-body">
                         <div class="form-group">

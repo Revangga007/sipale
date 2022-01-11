@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\admin\AdminController;
 use App\Models\Diagnosa;
-use Illuminate\Http\Request;
 
-class DiagnosaController extends Controller
+class DiagnosaController extends AdminController
 {
     public $title = 'Diagnosa';
 

@@ -65,7 +65,7 @@ class PenyakitController extends AdminController
     {
         $penyakit->update([
             'nama' => $request->nama,
-            'nama' => Str::slug($request->nama),
+            'slug' => Str::slug($request->nama),
             'deskripsi' => $request->deskripsi,
             'solusi' => $request->solusi
         ]);
