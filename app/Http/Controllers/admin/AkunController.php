@@ -6,7 +6,6 @@ use App\Models\Akun;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\admin\AdminController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AkunController extends AdminController
@@ -40,7 +39,7 @@ class AkunController extends AdminController
     public function store(Request $request)
     {
         if ($request->password == $request->password1) {
-            User::create([
+            Akun::create([
                 'name' => $request->name,
                 'username' => $request->username,
                 'email' => $request->email,

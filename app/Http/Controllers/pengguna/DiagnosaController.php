@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\pengguna;
 
 use App\Http\Controllers\pengguna\PenggunaController;
-use App\Models\BasisPengetahuan;
 use App\Models\Diagnosa;
 use Illuminate\Http\Request;
 use App\Models\Gejala;
@@ -23,9 +22,13 @@ class DiagnosaController extends PenggunaController
 
     public function analisa(Request $request)
     {
+        if(empty($request->kondisi) || count($request->kondisi) < 2){
+            $this->notification('success', 'Sehat', 'Kucing sehat tanpa gejala');
+            return redirect(route('pengguna.diagnosa.index'));
+        }
         $arbobot = [0, 1, 0.75, 0.5, 0.25];
         $argejala = [];
-
+        $arrCfKombine = [];
         for ($i = 0; $i < count($request->kondisi); $i++) {
             $arkondisi = explode("_", $request->kondisi[$i]);
             $kondisi[] = ['gejala_id' => $arkondisi[0]];

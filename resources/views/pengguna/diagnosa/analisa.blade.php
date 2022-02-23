@@ -61,32 +61,29 @@
                         </div>
                     </div>
                     <div class="my-4"></div>
-                    <div class="card no-print">
-                        <div class="card-header bg-success text-white">
-                            Deskripsi penyakit
-                        </div>
+                    <div class="card">
                         <div class="card-body">
+                            <h3 style="font-size: 25px" class="mb-2">Deskripsi penyakit</h3>
+                            <br>
                             {!!$penyakit->deskripsi!!}
                         </div>
                     </div>
                     <div class="my-4"></div>
-                    <div class="card no-print">
-                        <div class="card-header bg-dark text-white">
-                            Solusi penyakit
-                        </div>
+                    <div class="card">
                         <div class="card-body">
+                            <h3 style="font-size: 25px" class="mb-2">Solusi penyakit</h3>
+                            <br>
                             {!!$penyakit->solusi!!}
                         </div>
                     </div>
                 @endif
             @endforeach
             <div class="my-4"></div>
-            <div id="kemungkinan" class="mt-4">
+            <div id="kemungkinan" class="mt-4 no-print">
                 <div class="card">
-                    <div class="card-header bg-warning">
-                        Kemungkinan penyakit lain
-                    </div>
                     <div class="card-body">
+                        <h3 style="font-size: 25px" class="mb-2">Kemungkinan penyakit lain</h3>
+                        <br>
                         <table class="table table-bordered table-hovered">
                             <thead>
                                 <tr>
@@ -102,11 +99,13 @@
                                 @foreach ($cfHasil as $key => $cf)
                                     @foreach ($penyakits as $penyakit)
                                         @if ($key == $penyakit->id)
+                                        @if($i <= 3)
                                         <tr>
                                             <td>{{$i++}}</td>
                                             <td>{{$penyakit->nama}}</td>
                                             <td>{{$cf * 100}}%</td>
                                         </tr>
+                                        @endif
                                         @endif
                                     @endforeach
                                 @endforeach
@@ -115,9 +114,13 @@
                     </div>
                 </div>
             </div>
+            <div class="just-print">
+                <p>*) Hasil diagnosa dapat ditunjukan ke Puskeswan Batang</p></p>
+            </div>
         </div>
     </section>
 @endSection
+
 @push('script')
     <script>
         $('#plain tr:first').hide();

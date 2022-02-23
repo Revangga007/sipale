@@ -1761,16 +1761,31 @@ section {
     text-decoration: none;
 }
 
+.just-print {
+    visibility: hidden;
+}
+
 @media print
 {    
-    .no-print, .no-print *
+    .no-print
     {
         display: none !important;
     }
-
-    .mobile-nav, .mobile-nav *
+    .mobile-nav-toggle
     {
         display: none;
-        visibility: hidden;
-    } 
+    }
+    .back-to-top{
+        display: none;
+    }
+    .card-header{
+        background-color: #082744;
+        color: #fff;
+    }
+    a {
+        display: none;
+    }
+    .just-print {
+        visibility: visible;
+    }
 }

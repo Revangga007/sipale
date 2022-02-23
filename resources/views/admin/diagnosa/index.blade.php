@@ -55,6 +55,7 @@
 <div class="modal-dialog">
     <div class="modal-content">
         <form action="{{route('admin.laporan.create')}}" method="post">
+            @csrf
             <div class="modal-header">
                 <h5 class="modal-title" id="cetakModalLabel">Filter Tanggal</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -129,29 +130,29 @@
             })
         })
 
-        function hapusData(id) {
-            let url = $(`#delete_${id}`).attr('action');
-            let data = $(`#delete_${id}`).serialize();
-            let method = 'POST';
-            console.log(url, data, method);
-            $.ajax({
-                url: url,
-                type: method,
-                data: data,
-                success: function(response) {
-                    console.log(response);
-                    Swal.fire(
-                        'Berhasil!',
-                        'Data Gejala Berhasil Dihapus',
-                        'success'
-                    )
-                    setTimeout(() => {
-                        location.reload();
-                    }, 1000);
-                }
-            })
+        // function hapusData(id) {
+        //     let url = $(`#delete_${id}`).attr('action');
+        //     let data = $(`#delete_${id}`).serialize();
+        //     let method = 'POST';
+        //     console.log(url, data, method);
+        //     $.ajax({
+        //         url: url,
+        //         type: method,
+        //         data: data,
+        //         success: function(response) {
+        //             console.log(response);
+        //             Swal.fire(
+        //                 'Berhasil!',
+        //                 'Data Gejala Berhasil Dihapus',
+        //                 'success'
+        //             )
+        //             setTimeout(() => {
+        //                 location.reload();
+        //             }, 1000);
+        //         }
+        //     })
 
-        }
+        // }
     </script>
 
 @endpush

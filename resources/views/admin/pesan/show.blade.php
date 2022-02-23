@@ -53,6 +53,7 @@
                                     class="fas fa-arrow-left"></i> Kembali</a>
                         </div>
                         <div class="col-6 text-right">
+                            <a href="mailto:{{$pesan->email}}?subject={{$pesan->subjek}}" class="btn btn-primary"><i class="fas fa-reply"></i>&nbsp;Balas</a>
                             <form action="{{ route('admin.pesan.destroy', $pesan->id) }}" id="delete_{{ $pesan->id }}"
                                 method="POST" class="d-inline">
                                 @csrf
