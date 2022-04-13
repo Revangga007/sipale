@@ -16,8 +16,10 @@ class CreatePenyakitTable extends Migration
         Schema::create('penyakit', function (Blueprint $table) {
             $table->char('id', 4)->primary();
             $table->string('nama');
+            $table->string('slug');
             $table->longText('deskripsi');
             $table->longText('solusi');
+            $table->string('gambar');
             $table->timestamps();
         });
     }

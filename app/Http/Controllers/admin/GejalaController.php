@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Gejala;
-use App\Http\Requests\GejalaRequest;
+use App\Http\Requests\admin\GejalaRequest;
 use App\Http\Controllers\admin\AdminController;
 
 
@@ -14,7 +14,7 @@ class GejalaController extends AdminController
     public function index()
     {
         $title = $this->title;
-        $gejalas = Gejala::all();
+        $gejalas = Gejala::orderByDesc('id')->get();
         return view('admin.gejala.index', compact('title', 'gejalas'));
     }
 
@@ -98,7 +98,7 @@ class GejalaController extends AdminController
     {
         // try {
         $hapus = $gejala->delete();
-
-        return response()->json([$hapus], 200);
+        $this->notification('success', 'Berhasil', 'Data Gejala Berhasil Dihapus');
+        return redirect(route('admin.gejala.index'));
     }
 }

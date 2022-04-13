@@ -12,10 +12,15 @@ class Penyakit extends Model
     protected $table = 'penyakit';
     public $incrementing = false;
     protected $keyType = 'string';
-    protected $fillable = ['id', 'nama', 'deskripsi'];
+    protected $fillable = ['id', 'nama', 'slug', 'deskripsi', 'solusi', 'gambar'];
 
-    public function basis_pengetahuan()
+    public function basis_pengetahuans()
     {
         return $this->hasMany(BasisPengetahuan::class);
+    }
+
+    public function Diagnosas()
+    {
+        return $this->hasMany(Diagnosa::class);        
     }
 }

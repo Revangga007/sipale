@@ -16,7 +16,7 @@ class Gejala extends Model
         'id', 'nama'
     ];
 
-    public function basis_pengetahuan()
+    public function basis_pengetahuans()
     {
         return $this->hasMany(BasisPengetahuan::class);
     }

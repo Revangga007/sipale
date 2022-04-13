@@ -460,7 +460,7 @@ h6 {
 --------------------------------------------------------------*/
 #hero {
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     background: url("../img/hero-bg.jpg") top center;
     background-size: cover;
     position: relative;
@@ -1759,4 +1759,33 @@ section {
     background: #1c84e3;
     color: #fff;
     text-decoration: none;
+}
+
+.just-print {
+    visibility: hidden;
+}
+
+@media print
+{    
+    .no-print
+    {
+        display: none !important;
+    }
+    .mobile-nav-toggle
+    {
+        display: none;
+    }
+    .back-to-top{
+        display: none;
+    }
+    .card-header{
+        background-color: #082744;
+        color: #fff;
+    }
+    a {
+        display: none;
+    }
+    .just-print {
+        visibility: visible;
+    }
 }

@@ -5,7 +5,7 @@
         </a>
     </div>
     <div class="sidebar-brand sidebar-brand-sm">
-        <a href="{{ route('admin.dashboard') }}">SP</a>
+        <a href="{{ route('admin.dashboard') }}">PB</a>
     </div>
     <ul class="sidebar-menu">
         <li class="menu-header">Dashboard</li>
@@ -13,7 +13,7 @@
         <li class="nav-item dropdown{{ $title == 'Dashboard' ? ' active' : '' }}">
             <a href="#" class="nav-link has-dropdown"><i class="fas fa-home"></i><span>Dashboard</span></a>
             <ul class="dropdown-menu" style="display: none;">
-                <li><a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard Admin</a></li>
+                <li><a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard Karyawan</a></li>
                 <li><a class="nav-link" href="{{ route('pengguna.dashboard') }}">Dashboard Pengguna</a></li>
             </ul>
         </li>
@@ -34,7 +34,7 @@
                     Pengetahuan</span></a>
         </li>
         <li class="{{ $title == 'Diagnosa' ? 'active' : '' }}">
-            <a href="" class="nav-link"><i class="fas fa-users"></i><span>Diagnosa</span></a>
+            <a href="{{ route('admin.diagnosa.index')}}" class="nav-link"><i class="fas fa-users"></i><span>Diagnosa</span></a>
         </li>
 
         <li class="menu-header">Support</li>

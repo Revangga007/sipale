@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\admin\AdminController;
 use App\Models\Pesan;
 use Illuminate\Http\Request;
 
-class PesanController extends Controller
+class PesanController extends AdminController
 {
     protected $title = 'Pesan';
 
@@ -20,5 +20,14 @@ class PesanController extends Controller
     public function show(Pesan $pesan)
     {
         $title = $this->title;
+        return view('admin.pesan.show', compact('title', 'pesan'));
+    }
+
+    public function destroy(Pesan $pesan)
+    {
+        // try {
+        $hapus = $pesan->delete();
+        $this->notification('success', 'Berhasil', 'Data Pesan Berhasil Dihapus');
+        return redirect(route('admin.pesan.index'));
     }
 }

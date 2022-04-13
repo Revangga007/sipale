@@ -15,7 +15,7 @@ class BasisPengetahuanController extends AdminController
     public function index()
     {
         $title = $this->title;
-        $bps = BasisPengetahuan::with(['gejala', 'penyakit'])->get();
+        $bps = BasisPengetahuan::with(['gejala', 'penyakit'])->latest()->get();
         return view('admin.bp.index', compact('title', 'bps'));
     }
 

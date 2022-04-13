@@ -1,35 +1,23 @@
 @extends('layouts.pengguna.main')
 
 @section('content')
-    {{-- <div class="container">
-    <div class="card">
-        <div class="card-header">
-hi
-        </div>
-        <div class="card-body">
-            hello
-            i
-            ip
-        </div>
-    </div>
-</div> --}}
-    <section id="tentang" class="about">
+    {{-- <section id="tentang" class="about">
         <div class="container-fluid">
             <div class="section-title">
                 <h2>Tentang</h2>
             </div>
             <div class="row">
                 <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch">
-                    <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video"
-                        data-autoplay="true"></a>
+                    <a href="https://www.youtube.com/watch?v=-empBmuvKBI&t=270s" class="venobox play-btn mb-4"
+                        data-vbtype="video" data-autoplay="true"></a>
                 </div>
 
                 <div
                     class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
-                    <h3>Enim quis est voluptatibus aliquid consequatur fugiat</h3>
-                    <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima
-                        temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi. Libero laboriosam
-                        sint et id nulla tenetur. Suscipit aut voluptate.</p>
+                    <h3>{{ Str::upper(config('app.name')) }}</h3>
+                    <p>Banyak masyarakat Kabupaten Batang memiliki hewan peliharaan. Akan tetapi, tidak diimbangi dengan
+                        pengetahuan mendalam tentang perawatan hewan yang dimilikinya. Untuk itulah aplikasi ini dibangun
+                        untuk membantu diagnosa pada hewan peliharaan masyarakat Kabupaten Batang.</p>
 
                     <div class="icon-box">
                         <div class="icon"><i class="bx bx-fingerprint"></i></div>
@@ -57,4 +45,5 @@ hi
             </div>
 
         </div>
+    </section> --}}
     @endsection
