@@ -22,14 +22,30 @@ Misalnya saja kita tidak dapat mengetahui sesering apa kucing mengalami mual-mua
 ## Gambaran Sistem
 **Sisi Pengguna**
 ![image](https://user-images.githubusercontent.com/65581336/171150488-f57621ca-d35b-4950-8a1e-5d4a7218e90c.png)
+------------
+
 ![image](https://user-images.githubusercontent.com/65581336/171150591-916ed670-1a32-47d7-8aa1-f5b2ab3b7216.png)
+------------
+
 ![image](https://user-images.githubusercontent.com/65581336/171150644-2fa49396-01f4-4d51-b9e7-7717479294f1.png)
+------------
+
 ![image](https://user-images.githubusercontent.com/65581336/171150739-a29c8f07-d743-4e8b-8d2b-32b5ee184731.png)
+------------
 
 **Sisi Admin**
 ![image](https://user-images.githubusercontent.com/65581336/171151582-783ae4ac-3667-4237-90e7-cb7b25d4e13f.png)
+------------
+
 ![image](https://user-images.githubusercontent.com/65581336/171151102-242e09ac-e5d6-461e-88f6-6f8a867d1eb0.png)
+------------
+
 ![image](https://user-images.githubusercontent.com/65581336/171151242-15f4a52d-52b0-44a1-a5bd-f6b43fd15df3.png)
+------------
+
 ![image](https://user-images.githubusercontent.com/65581336/171151326-a4fe8efb-5608-4545-92f8-7dfe4239cb4d.png)
+------------
+
 ![image](https://user-images.githubusercontent.com/65581336/171151435-1b0818a6-7058-43c7-9b33-432b7979eb94.png)
+------------
 
