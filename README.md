@@ -1,62 +1,35 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# SIPAKU
+![image](https://user-images.githubusercontent.com/65581336/171142396-5febf5b6-743a-45d5-b195-acf2c22052a8.png)
+## Apa itu SIPAKU?
+SIPAKU adalah Sistem Pakar Diagnosa Penyakit Pada Kucing (Studi Kasus Dinas Kelautan Perikanan dan Peternakan KAB. BATANG ). SIPAKU dibangun menggunakan teknologi **PHP** dengan framework **laravel 8**. 
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Metode perhitungan yang ada pada sistem pakar menggunakan metode ***certainty factor***. Alasan penggunaan menggunakan metode *certainty factor* karena terkadang ditemukan jawaban yang tidak memiliki kepastian penuh.
+Misalnya saja kita tidak dapat mengetahui sesering apa kucing mengalami mual-mual jika hanya terdapat pilihan jawaban "Ya"atau "Tidak". 
 
-## About Laravel
+## Apa Saja Fitur yang Terdapat pada SIPAKU?
+**Sisi Pengguna**
+- Sistem dapat digunakan untuk mendiagnosa penyakit pada kucing (dengan syarat harus mengisi biodata pemeriksaan terlebih dahulu).
+- Sistem dapat digunakan untuk melihat info penyakit yang berguna untuk mengedukasi masyarakat mengenai penyakit pada kucing.
+- Sistem dapat digunakan untuk mengirim pesan kepada admin terkait kritik, saran, atau pertanyaan.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Sisi Admin**
+- Sistem dapat digunakan untuk mengelola data gejala
+- Sistem dapat digunakan untuk mengelola data penyakit
+-Sistem dapat digunakan untuk mengelola data basis pengetahuan (hubungan antara suatu gejala dengan penyakit)
+-Sistem dapat merekap data hasil diagnosa penyakit kucing
+-Sistem dapat digunakan untuk membaca dan membalas pesan yang disampaikan oleh pengguna
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Gambaran Sistem
+**Sisi Pengguna**
+![image](https://user-images.githubusercontent.com/65581336/171150488-f57621ca-d35b-4950-8a1e-5d4a7218e90c.png)
+![image](https://user-images.githubusercontent.com/65581336/171150591-916ed670-1a32-47d7-8aa1-f5b2ab3b7216.png)
+![image](https://user-images.githubusercontent.com/65581336/171150644-2fa49396-01f4-4d51-b9e7-7717479294f1.png)
+![image](https://user-images.githubusercontent.com/65581336/171150739-a29c8f07-d743-4e8b-8d2b-32b5ee184731.png)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Sisi Admin**
+![image](https://user-images.githubusercontent.com/65581336/171151582-783ae4ac-3667-4237-90e7-cb7b25d4e13f.png)
+![image](https://user-images.githubusercontent.com/65581336/171151102-242e09ac-e5d6-461e-88f6-6f8a867d1eb0.png)
+![image](https://user-images.githubusercontent.com/65581336/171151242-15f4a52d-52b0-44a1-a5bd-f6b43fd15df3.png)
+![image](https://user-images.githubusercontent.com/65581336/171151326-a4fe8efb-5608-4545-92f8-7dfe4239cb4d.png)
+![image](https://user-images.githubusercontent.com/65581336/171151435-1b0818a6-7058-43c7-9b33-432b7979eb94.png)
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
