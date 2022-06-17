@@ -16,7 +16,8 @@ class LaporanController extends AdminController
         $judul = "Laporan Diagnosa Penyakit Kucing";
         $awalPeriode = date('d-m-Y',strtotime($awal));
         $akhirPeriode = date('d-m-Y',strtotime($akhir));
-        $pdf = PDF::loadView('admin.diagnosa.laporan', compact('diagnosas', 'judul', 'awalPeriode', 'akhirPeriode'))->setPaper('a4', 'landscape');
+        $pdf = PDF::loadView('admin.diagnosa.laporan', compact('diagnosas', 'judul', 'awalPeriode', 'akhirPeriode'))
+        ->setPaper('a4', 'landscape');
         return $pdf->stream();
         
     }
